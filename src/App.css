@@ -45,7 +45,7 @@ footer {
 .day {
   text-align: center;
 }
-.pending {
+.pending, .available {
   background-color: #0098e9;
   color: white;
   cursor: pointer;
@@ -66,9 +66,13 @@ footer {
   width: 40vw;
   justify-content: center;
 }
-.day-info {
+.day-info, .dropdowns {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.dropdowns {
+  margin-bottom: 10px;
 }

@@ -6,8 +6,8 @@ import Calendar from './Calendar';
 
 const VerCitas = () => {
     //example dates
-    const passedDates = [moment("03 Mar 2021"), moment("05 Mar 2021")];
-    const scheduledDates = [moment("18 Mar 2021"), moment("21 Mar 2021"), moment("07 Apr 2021")];
+    const passedDates = [moment("2021 03 17", "YYYY MM DD"), moment("2021 03 22", "YYYY MM DD")];
+    const scheduledDates = [moment("2021 04 03", "YYYY MM DD"), moment("2021 04 09", "YYYY MM DD")];
 
     //Only useful for this one
     const [selectedDay, selectDay] = useState(scheduledDates[0]);

@@ -37,12 +37,12 @@ const Calendar = ({onSelect, dayStyle}) => {
                 <FontAwesomeIcon icon={faArrowRight} color="#007bff" onClick={() => setValue(nextMonth())} />
             </div>
             <div className="week">
-                {weekDays.map(day => <div className="weekDay"> {day} </div>)}
+                {weekDays.map((day, index) => <div key={index} className="weekDay"> {day} </div>)}
             </div>
-            {calendar.map(week =>
-                <div className="week">{
-                    week.map(day => <div className={ dayStyle(day, value)}>
-                        <div className={"day"} onClick={() => onSelect(day)}>
+            {calendar.map((week, ind) =>
+                <div key={ind} className="week">{
+                    week.map((day, index) => <div key={index} className={ dayStyle(day, value)}>
+                        <div key={index} className={"day"} onClick={() => onSelect(day)}>
                             {day.format("D")} </div>
                     </div>
                     )}

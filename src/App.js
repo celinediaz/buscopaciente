@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import VerCitas from './components/VerCitas';
+import AgendarCita from './components/AgendarCita';
 import LandingPage from './components/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/vercitas">
             < VerCitas />
+          </Route>
+          <Route path="/agendarcitas">
+            < AgendarCita />
           </Route>
         </Switch>
 
