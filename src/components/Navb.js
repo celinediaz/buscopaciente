@@ -1,9 +1,25 @@
-import React from 'react'
-import { Navbar, Nav, Image } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import React, {useState} from 'react'
+import { Navbar, Nav, Image, Form, Button } from 'react-bootstrap';
+import {Link, useHistory} from 'react-router-dom';
 import logo from './logo.jpeg'
+import { useAuth } from "../contexts/AuthContext"
 
 const Navb = () => {
+  const history = useHistory();
+  const [error, setError] = useState('');
+  const {logout, currentUser} = useAuth()
+
+   async function handleLogOut(){
+    setError("");
+    try {
+      await logout()
+      history.push("/")
+    }catch{
+      console.log("error")
+      setError("Error")
+    }
+  }
+
   return (
     <Navbar collapseOnSelect expand="lg">
           <Navbar.Brand href="#home">
@@ -12,8 +28,12 @@ const Navb = () => {
           <Navbar.Brand as={Link} to="/">BuscoPaciente</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-            <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
-            <Nav.Link as={Link} to="/signup">Registrarse</Nav.Link>
+           { !currentUser && <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link> }
+           { !currentUser && <Nav.Link as={Link} to="/signup">Registrarse</Nav.Link> }
+           { currentUser && 
+            <Form onSubmit={handleLogOut}>
+            <Button variant="outline" type="submit">Log Out</Button>
+            </Form> }
           </Navbar.Collapse>
     </Navbar>
   )

@@ -12,8 +12,13 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
 
   function signup(email, password) {
-    console.log("cuenta creada")
     return auth.createUserWithEmailAndPassword(email, password)
+  }
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+  }
+  function logout() {
+    return auth.signOut()
   }
 
   useEffect(() => {
@@ -27,6 +32,8 @@ export function AuthProvider({ children }) {
   const value = {
     currentUser,
     signup,
+    login,
+    logout
   }
 
   return (

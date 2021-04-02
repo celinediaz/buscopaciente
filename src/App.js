@@ -15,8 +15,8 @@ function App() {
   return (
     <Router>
     <div className="App">
+    <AuthProvider>
       <Navb />
-      <AuthProvider>
         <Switch>
           <Route exact path="/">
             < LandingPage />
