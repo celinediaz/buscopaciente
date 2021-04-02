@@ -1,8 +1,30 @@
-import React from "react";
-import { Form, Button, Container, Row, Col, Image } from "react-bootstrap";
+import React, {useRef, useState} from 'react'
+import { Form, Button, Container, Row, Col, Image, Alert } from "react-bootstrap";
 import image from "./undraw_medicine.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext"
 const Login = () => {
+  const emailRef =useRef();
+  const passRef =useRef();
+  const {login} = useAuth()
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  async function handleSubmit(e){
+    e.preventDefault()
+    try{
+        setError("")
+        setLoading(true)
+        await login(emailRef.current.value, passRef.current.value) 
+        history.push("/") //use a ternary operator to choose which route to go (doctor/user)
+    } catch {
+        console.log("error")
+        setError("No se ha podido iniciar sesión")
+    }
+    setLoading(false);
+}
+
   return (
     <div>
       <h1>Bienvenido a BUSCOPACIENTE</h1>
@@ -10,16 +32,17 @@ const Login = () => {
       <Container>
         <Row>
           <Col>
-            <Form>
+          {error && <Alert variant="danger">{error}</Alert>}
+            <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Control type="email" ref={emailRef} placeholder="Enter email" />
               </Form.Group>
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" ref={passRef} placeholder="Password" />
               </Form.Group>
-              <Button variant="primary" type="submit">
+              <Button variant="primary" type="submit" disabled={loading}>
                 Iniciar Sesión
               </Button>
               <Form.Text className="text-muted">

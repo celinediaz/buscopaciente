@@ -7,6 +7,7 @@ import VerCitas from './components/VerCitas';
 import AgendarCita from './components/AgendarCita';
 import LandingPage from './components/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AuthProvider } from "./contexts/AuthContext";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <Router>
     <div className="App">
+    <AuthProvider>
       <Navb />
         <Switch>
           <Route exact path="/">
@@ -32,7 +34,7 @@ function App() {
             < AgendarCita />
           </Route>
         </Switch>
-
+        </AuthProvider>
       <Footer />
     </div>
     </Router>
