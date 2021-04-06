@@ -114,3 +114,60 @@ th{
   margin-top: 35px;
   border-radius: 50%;
 }
+
+
+/*Menu experto css*/
+.encabezado_menu_experto{
+  margin-top: -200px;
+  padding-bottom: 50px;
+  margin-bottom: 10%;
+}
+
+.bienvenida_experto{
+  color: #458DFC;
+}
+
+.pregunta_exeprto{
+  color: gray;
+}
+
+
+.menu_experto{
+  margin-top: -430px;
+}
+
+.botones_menu_experto{
+  margin-top: 70px;
+}
+
+
+.boton_editar_datos{
+  margin: 10px;
+  width: 400px;
+  float: right;
+
+  }
+
+.boton_ver_citas{
+  margin: 10px;
+  width: 400px;
+  float: right;
+
+
+}
+
+.boton_ver_expedientes{
+  margin: 10px;
+  width: 400px;
+  float: right;
+
+}
+
+.boton_admin{
+  margin: 10px;
+  width: 400px;
+  float: right;
+}
+
+
+
