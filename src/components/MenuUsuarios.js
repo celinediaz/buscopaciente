@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import { Form, Button, Container, Row, Col, Image, Alert } from "react-bootstrap";
+import { Container, Row, Col, Image} from "react-bootstrap";
 import image from "./undraw_medicine.svg";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
