@@ -24,6 +24,9 @@ function App() {
           <Route path="/signup">
             < Signup />
           </Route>
+          <Route path="/signuppract">
+            < SignupPract />
+          </Route>
           <Route path="/login">
             < Login />
           </Route>
@@ -32,6 +35,12 @@ function App() {
           </Route>
           <Route path="/agendarcitas">
             < AgendarCita />
+          </Route>
+          <Route path="/expedientes">
+            < ListaExpedientes />
+          </Route>
+          <Route path="/expediente">
+            < ExpedienteIndividual />
           </Route>
         </Switch>
         </AuthProvider>
