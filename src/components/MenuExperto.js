@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {Button, Row, Col, Container, Navbar, Image, Nav } from 'react-bootstrap'
+import {Link} from 'react-router-dom';
 
 const MenuExperto = () => {
    
@@ -18,11 +19,22 @@ const MenuExperto = () => {
           <Row xs={2} md={2} lg={2}>
             <div className="botones_menu_experto">
             <Col> 
-            <div className="boton_editar_datos"><Button variant="primary" size="lg" block>Editar mis datos</Button> </div>
-            <div className="boton_ver_citas"><Button variant="primary" size="lg" block>Ver mis citas</Button> </div>
-            <div className="boton_ver_expedientes"><Button variant="primary" size="lg" block>Ver expedientes</Button> </div>
-            <div className="boton_admin"><Button variant="primary" size="lg" block> Añadir admin</Button> </div>
-            </Col>
+            <Link to="/">
+              <Button className="my-2"size="lg" block>
+                  Editar mis datos
+              </Button>
+          </Link>
+          <Link to="/vercitas">
+              <Button className="my-2" size="lg" block>
+                  Ver mis citas
+              </Button>
+          </Link>
+            <Link to="/expedientes">
+              <Button className="my-2" size="lg" block>
+                  Ver expedientes
+              </Button>
+          </Link>
+          </Col>
             </div>
 
             <Col> 
