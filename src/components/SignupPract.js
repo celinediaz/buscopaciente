@@ -129,9 +129,7 @@ const SignupPract = () => {
                           Selecciona los horarios que tienes disponible para atender a tus pacientes. Utiliza Ctrl. y el click para seleccionarlos.
                         </Form.Text>
                       </Form.Group>
-    
                     </Form.Row>
-    
                     <Button variant="primary" type="submit">
                       Guardar cambios
                     </Button>
