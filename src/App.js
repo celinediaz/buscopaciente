@@ -9,9 +9,14 @@ import Signup from './components/Signup';
 import VerCitas from './components/VerCitas';
 import AgendarCita from './components/AgendarCita';
 import LandingPage from './components/LandingPage';
+import MenuExperto from './components/MenuExperto';
+import SignupPract from './components/SignupPract';
+import ListaExpedientes from './components/ListaExpedientes';
+import ExpedienteIndividual from './components/ExpedienteIndividual';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from "./contexts/AuthContext";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 
 
 function App() {
@@ -45,6 +50,10 @@ function App() {
           <Route path="/expediente">
             < ExpedienteIndividual />
           </Route>
+          <Route path="/experto">
+            < MenuExperto />
+          </Route>
+        
         </Switch>
         </AuthProvider>
       <Footer />
