@@ -27,11 +27,11 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Bienvenido a BUSCOPACIENTE</h1>
+      <h1>Bienvenido a BuscoPaciente</h1>
       <h2>Iniciar Sesión</h2>
       <Container>
         <Row>
-          <Col>
+          <Col className="align-self-center">
           {error && <Alert variant="danger">{error}</Alert>}
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
@@ -47,7 +47,7 @@ const Login = () => {
               </Button>
               <Form.Text className="text-muted">
                 ¿No tienes cuenta?{" "}
-                <Link to="/signup">Registrate en BuscoPaciente </Link>
+                <Link to="/signup">Regístrate en BuscoPaciente </Link>
               </Form.Text>
             </Form>
           </Col>
