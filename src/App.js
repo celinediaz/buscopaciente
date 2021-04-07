@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import VerCitas from './components/VerCitas';
 import AgendarCita from './components/AgendarCita';
 import LandingPage from './components/LandingPage';
+import MenuUsuarios from './components/MenuUsuarios';
 import MenuExperto from './components/MenuExperto';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from "./contexts/AuthContext";
@@ -47,10 +48,12 @@ function App() {
           <Route path="/expediente">
             < ExpedienteIndividual />
           </Route>
+          <Route path="/menuu">
+            < MenuUsuarios />
+          </Route>
           <Route path="/experto">
             < MenuExperto />
           </Route>
-        
         </Switch>
         </AuthProvider>
       <Footer />
