@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import { Container, Row, Col, Image} from "react-bootstrap";
+import { Container, Row, Col, Image, Button,} from "react-bootstrap";
 import image from "./undraw_medicine.svg";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
@@ -34,15 +34,17 @@ const MenuUsuarios = () => {
       <Container>
         <Row>
           <Col>
-          <Image className="align-self-center hover" src={image} width="70%" />
+          <Image className="align-self-center" src={image} width="70%" />
           <h4>¿Buscas alguien que te atienda?</h4>
           <h6>Regístrate como paciente, es gratis</h6>
+          <Button variant="primary" type="submit">Registrarme</Button>
           </Col>
 
           <Col>
             <Image className="align-self-center" src={image} width="70%" />
             <h4>¿Buscas paciente?</h4>
             <h6>Regístrate como practicante</h6>
+            <Button variant="primary" type="submit">Registrarme</Button>
           </Col>
         </Row>
       </Container>
