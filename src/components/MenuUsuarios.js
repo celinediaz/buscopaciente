@@ -37,14 +37,14 @@ const MenuUsuarios = () => {
           <Image className="align-self-center" src={image} width="70%" />
           <h4>¿Buscas alguien que te atienda?</h4>
           <h6>Regístrate como paciente, es gratis</h6>
-          <Button variant="primary" type="submit">Registrarme</Button>
+          <Button variant="primary" type="submit" as={Link} to="/signup">Registrarme</Button>
           </Col>
 
           <Col>
             <Image className="align-self-center" src={image} width="70%" />
             <h4>¿Buscas paciente?</h4>
             <h6>Regístrate como practicante</h6>
-            <Button variant="primary" type="submit">Registrarme</Button>
+            <Button variant="primary" type="submit" as={Link} to="/signuppract">Registrarme</Button>
           </Col>
         </Row>
       </Container>
