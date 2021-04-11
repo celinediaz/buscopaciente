@@ -8,15 +8,15 @@ const RegistroPaciente = () => {
       <header className="App-header">
 
 
-        <div class="encabezado2">
+        <div class="encabezado">
           <h1 class="titu">Sé parte de BuscoPaciente</h1>
-          <h2> Crear Cuenta</h2>
-          <h5>Los datos proporcionados no serén publicados bajo ninguna circunstancia</h5>
+          <h2 className=  "texto_Cuenta"> Crear Cuenta</h2>
+          <h5 className="texto_cuentapaciente">Los datos proporcionados no serén publicados bajo ninguna circunstancia</h5>
         </div>
 
         <div class='formulario'>
 
-          <Form className="formi">
+          <Form className="datos_registro">
             <Row md>
               <Col md>
                 <Form.Label class="Name">Nombre(s):</Form.Label>

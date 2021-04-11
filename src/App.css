@@ -223,13 +223,13 @@ th{
   margin-bottom: 10px;
 }
 
-h2, h5{
+.texto_cuentapaciente, .texto_Cuenta{
   text-align: center;
   color: gray;
   padding: 10px;
 }
 
-.encabezado2{
+.encabezado_registro{
   padding: 5%;
 }
 
@@ -239,7 +239,7 @@ h2, h5{
 
 }
 
-.formi{
+.datos_registro{
   width: 1000px;
   margin-bottom: 20px;
 }
