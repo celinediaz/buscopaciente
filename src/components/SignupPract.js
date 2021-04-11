@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
 import {Card, Form, Button, Col} from 'react-bootstrap';
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SignupPract = () => {
   const emailRef =useRef();
@@ -24,7 +24,7 @@ const SignupPract = () => {
           setLoading(true)
           let otherRef = {name: nameRef.current.value, desc: descRef.current.value, job: jobRef.current.value, state: stateRef.current.value, horario: horarioRef.current.value, price: priceRef.current.value}
           await signup(emailRef.current.value, passRef.current.value, "prac", otherRef) 
-          history.push("/")  //use a ternary operator to choose which route to go (doctor/user)
+          history.push("/")
       } catch {
           console.log("error")
           setError("No se ha podido crear la cuenta")
