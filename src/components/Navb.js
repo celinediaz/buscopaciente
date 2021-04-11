@@ -7,7 +7,7 @@ import { useAuth } from "../contexts/AuthContext"
 const Navb = () => {
   const history = useHistory();
   const [error, setError] = useState('');
-  const {logout, currentUser} = useAuth()
+  const {logout, currentUser, currentUserdb} = useAuth()
 
    async function handleLogOut(){
     setError("");
@@ -30,6 +30,7 @@ const Navb = () => {
           <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
            { !currentUser && <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link> }
            { !currentUser && <Nav.Link as={Link} to="/signup">Registrarse</Nav.Link> }
+           { currentUserdb && (currentUserdb.role =="prac" ? <Nav.Link as={Link} to="/experto">Menu</Nav.Link> : <Nav.Link as={Link} to="/usuario">Menu</Nav.Link>)}
            { currentUser && 
             <Form onSubmit={handleLogOut}>
             <Button variant="outline" type="submit">Log Out</Button>

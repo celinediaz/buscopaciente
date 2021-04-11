@@ -19,7 +19,7 @@ const Signup = () => {
         try{
             setError("")
             setLoading(true)
-            await signup(emailRef.current.value, passRef.current.value) 
+            await signup(emailRef.current.value, passRef.current.value, "user") 
             history.push("/")  //use a ternary operator to choose which route to go (doctor/user)
         } catch {
             console.log("error")
