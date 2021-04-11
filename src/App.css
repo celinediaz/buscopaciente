@@ -4,17 +4,10 @@
 
 h1 {
   color: #007bff;
+  padding-top: 50px;
+  padding-bottom: 10px;
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 10vh;
-  background-image: linear-gradient(180deg, #48bcf6, #458dfc);
-  color: white;
-  text-align: center;
-  padding-top: 1vh;
-}
+
 
 /* Calendar Styling*/
 
@@ -75,4 +68,57 @@ footer {
 
 .dropdowns {
   margin-bottom: 10px;
+}
+
+/*ListaExpedientes css*/
+
+.buscador{
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.icono{
+  margin-right: 15px;
+}
+
+th{
+  color:#fdfdfd;
+  background-image: linear-gradient(180deg, #48bcf6, #458dfc);
+  text-align: center;
+  font-weight: normal;
+}
+
+/*Expediente Individual css*/
+
+.card{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 280px;
+}
+.card h6, 
+.card p{
+  display: inline;
+}
+
+.img{
+  width: 100px;
+  height: 100px;
+  align-self: center;
+  margin-top: 35px;
+  border-radius: 50%;
+}
+
+/*MenuUsuarios css*/
+
+
+/*Footer css*/
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  background-image: linear-gradient(180deg, #48bcf6, #458dfc);
+  color: white;
+  text-align: center;
+  padding-top: 1vh;
 }
