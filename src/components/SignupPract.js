@@ -123,6 +123,22 @@ const SignupPract = () => {
     
                     <Form.Row>
                       <Form.Group as={Col} controlId="formGridState">
+                        <Form.Label>Días / Día</Form.Label>
+                        <Form.Control as="select" multiple>
+                          <option>Domingo</option>
+                          <option>Lunes</option>
+                          <option>Martes</option>
+                          <option>Miércoles</option>
+                          <option>Jueves</option>
+                          <option>Viernes</option>
+                          <option>Sábado</option>
+                        </Form.Control>
+                        <Form.Text id="passwordHelpBlock" muted>
+                          Selecciona los días que tienes disponible para atender a tus pacientes. Utiliza Ctrl. y el click para seleccionarlos.
+                        </Form.Text>
+                      </Form.Group>
+
+                      <Form.Group as={Col} controlId="formGridState">
                         <Form.Label>Horario</Form.Label>
                         <Form.Control as="select" multiple ref={horarioRef}>
                           <option>1 am - 2am</option>
