@@ -32,7 +32,7 @@ const SignupPract = () => {
       setLoading(false);
   }
     const tipoDoctor = ['Medicina general', 'Psicología', 'Nutrición', 'Enfermería', 'Químico', 'Dentista']
-    const estado = ['Nuevo León', 'Tabasco', 'Sinaloa']
+    const estado = ['Nuevo León', 'Chiapas', 'Sinaloa']
     const precio = ['Gratis', '$50', '$100', '$150', '$200', '$250']
 
     const credenciales = [
