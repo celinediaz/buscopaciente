@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext"
 const Signup = () => {
     const emailRef =useRef();
     const passRef =useRef();
-    const passConfRef =useRef();
+    const nameRef =useRef();
     const {signup} = useAuth()
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -13,13 +13,11 @@ const Signup = () => {
 
     async function handleSubmit(e){
         e.preventDefault()
-        if(passRef.current.value !== passConfRef.current.value){
-            return setError('Las contraseñas son diferentes')
-        }
         try{
             setError("")
             setLoading(true)
-            await signup(emailRef.current.value, passRef.current.value) 
+            let otherRef = {name: nameRef.current.value}
+            await signup(emailRef.current.value, passRef.current.value, "user", otherRef) 
             history.push("/")  //use a ternary operator to choose which route to go (doctor/user)
         } catch {
             console.log("error")
@@ -40,9 +38,9 @@ const Signup = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type="password" ref={passRef} placeholder="Password" />
               </Form.Group>
-              <Form.Group controlId="formBasicPasswordConfirm">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" ref={passConfRef} placeholder="Password" />
+              <Form.Group controlId="formBasicName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control ref={nameRef} placeholder="Name" />
               </Form.Group>
               <Button variant="primary" type="submit" disabled={loading}>
                 Crear cuenta

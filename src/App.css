@@ -4,17 +4,10 @@
 
 h1 {
   color: #007bff;
+  padding-top: 50px;
+  padding-bottom: 10px;
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 10vh;
-  background-image: linear-gradient(180deg, #48bcf6, #458dfc);
-  color: white;
-  text-align: center;
-  padding-top: 1vh;
-}
+
 
 /* Calendar Styling*/
 
@@ -115,231 +108,17 @@ th{
   border-radius: 50%;
 }
 
-
-/*Menu experto css*/
-.encabezado_menu_experto{
-  margin-top: -200px;
-  padding-bottom: 50px;
-  margin-bottom: 10%;
-}
-
-.bienvenida_experto{
-  color: #458DFC;
-}
-
-.pregunta_exeprto{
-  color: gray;
-}
+/*MenuUsuarios css*/
 
 
-.menu_experto{
-  margin-top: -430px;
-}
-
-.botones_menu_experto{
-  margin-top: 70px;
-}
-
-
-.boton_editar_datos{
-  margin: 10px;
-  width: 400px;
-  float: right;
-
-  }
-
-.boton_ver_citas{
-  margin: 10px;
-  width: 400px;
-  float: right;
-
-
-}
-
-.boton_ver_expedientes{
-  margin: 10px;
-  width: 400px;
-  float: right;
-
-}
-
-.boton_admin{
-  margin: 10px;
-  width: 400px;
-  float: right;
-}
-
-
-
-
-
-/*Menu paciente css*/
-
-.encabezado_menu_paciente{
-  margin-top: -280px;
-}
-
-.contenedor_menu_paciente{
-  margin-top: -390px;
-}
-
-.titulo_encabezado{
-  color: #458dfc;
-}
-
-.botones_paciente{
-  border: 60px;
-  margin-top: 110px;
-  
-}
-
-.agendar_cita_paciente{
-  padding: 10px;
-  width: 380px;
-  float:right;
-
-
-}
-
-.ver_citas_paciente{
-  padding: 10px;
-  width: 380px;
-  float: right;
-
-  
- 
-}
-
-.pregunta_paciente{
-  color: gray;
-}
-
-
-/*Registro paciente css*/
-.titu{
+/*Footer css*/
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  background-image: linear-gradient(180deg, #48bcf6, #458dfc);
+  color: white;
   text-align: center;
-  color: #458DFC;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  padding-top: 1vh;
 }
-
-.texto_cuentapaciente, .texto_Cuenta{
-  text-align: center;
-  color: gray;
-  padding: 10px;
-}
-
-.encabezado_registro{
-  padding: 5%;
-}
-
-
-.formulario{
-  color:black
-
-}
-
-.datos_registro{
-  width: 1000px;
-  margin-bottom: 20px;
-}
-
-.boton{
-  padding: 20px;
-}
-
-
-
-/*Pagos css*/
-.titulo_Agenda{
-  text-align: center;
-  color: #458DFC;
-  margin-top: 40px;
-  margin-bottom: 10px;
-}
-
-
-
-.datostarjeta{
-  color: black;
-  width: 1000px;
-  position: relative; 
-  background-color:#fff;
-
-}
-
-.negritas{
-  font-weight: 500;
-}
-.Año{
-  color:#fff
-}
-
-
-.boton_realizarpago{
-  padding: 6%;
-}
-
-.datos{
-  width: 500px;
-  margin-bottom: 20px;
-  background-color: #fff;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-.citas{
-  font-size: medium;
-}
-
-.formato{
-  background-color: rgb(60, 144, 192);
-  margin: 50px;
-  width: 400px;
-}
-
-.Number{
-  background-color: #fff;
-}
-
-
-
-.resumen{
-  text-align: center;
-  padding: 50px;
-}
-
-.finalizarPago{
-  padding: 10%;
-  
-}
-
-.imagenes_tarjeta{
-  background-color: #fff;
-  margin: 50px;
-  margin-left: 30px;
-  
-}
-
-
-
-h5{
-  text-align: center;
-  color: gray;
-  padding: 5px;
-}
-
-.encabezado_pagos{
-  padding: 8%;
-}
-
-
-.textofinal{
-  color: black;
-  font-size: unset;
-  font-weight: initial;
-  text-align: center;
-  
-}
-
-
-
