@@ -34,7 +34,7 @@ function App() {
           <Route path="/agendarcitas" component={AgendarCita}/>
           <ExpRoute path="/expedientes" component={ListaExpedientes} />
           <UserRoute path="/expediente" component = {ExpedienteIndividual} />
-          <Route path="/usuario" component = {MenuUsuarios}/>
+          <Route path="/registro" component = {MenuUsuarios}/>
           <ExpRoute path="/experto" component={MenuExperto}/>
         </Switch>
         </AuthProvider>
