@@ -29,7 +29,7 @@ const Navb = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
           <Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
            { !currentUser && <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link> }
-           { !currentUser && <Nav.Link as={Link} to="/signup">Registrarse</Nav.Link> }
+           { !currentUser && <Nav.Link as={Link} to="/registro">Registrarse</Nav.Link> }
            { currentUser && 
             <Form onSubmit={handleLogOut}>
             <Button variant="outline" type="submit">Log Out</Button>

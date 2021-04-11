@@ -48,7 +48,7 @@ function App() {
           <Route path="/expediente">
             < ExpedienteIndividual />
           </Route>
-          <Route path="/menuu">
+          <Route path="/registro">
             < MenuUsuarios />
           </Route>
           <Route path="/experto">
