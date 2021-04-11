@@ -123,7 +123,7 @@ const SignupPract = () => {
     
                     <Form.Row>
                       <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>Días / Día</Form.Label>
+                        <Form.Label>Día</Form.Label>
                         <Form.Control as="select" multiple>
                           <option>Domingo</option>
                           <option>Lunes</option>
