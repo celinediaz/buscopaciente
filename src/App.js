@@ -10,6 +10,9 @@ import MenuExperto from './components/MenuExperto';
 import SignupPract from './components/SignupPract';
 import ListaExpedientes from './components/ListaExpedientes';
 import ExpedienteIndividual from './components/ExpedienteIndividual';
+import MenuPaciente from './components/MenuPaciente';
+import RegistroPaciente from './components/RegistroPaciente';
+import Pagos from './components/Pagos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from "./contexts/AuthContext";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -50,6 +53,16 @@ function App() {
           <Route path="/experto">
             < MenuExperto />
           </Route>
+          <Route path="/paciente">
+            < MenuPaciente />
+          </Route>
+          <Route path="/registropaciente">
+            < RegistroPaciente />
+          </Route>
+          <Route path="/pago">
+            < Pagos />
+          </Route>
+        
         
         </Switch>
         </AuthProvider>
