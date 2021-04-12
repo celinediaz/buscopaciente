@@ -12,6 +12,9 @@ import LandingPage from './components/LandingPage';
 import MenuUsuarios from './components/MenuUsuarios';
 import MenuExperto from './components/MenuExperto';
 import ExpRoute from './components/ExpRoute';
+import MenuPaciente from './components/MenuPaciente';
+import Pagos from './components/Pagos';
+import RegistroPaciente from './components/RegistroPaciente';
 import UserRoute from './components/UserRoute';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from "./contexts/AuthContext";
@@ -36,6 +39,13 @@ function App() {
           <UserRoute path="/expediente" component = {ExpedienteIndividual} />
           <Route path="/registro" component = {MenuUsuarios}/>
           <ExpRoute path="/experto" component={MenuExperto}/>
+          <Route path="/paciente" component={MenuPaciente}/>
+          <Route path="/pagos" component={Pagos}/>
+          <Route path="/registropaciente" component={RegistroPaciente}/>
+
+          
+
+
         </Switch>
         </AuthProvider>
       <Footer />
