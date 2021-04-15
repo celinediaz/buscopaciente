@@ -86,6 +86,8 @@ th{
   background-image: linear-gradient(180deg, #48bcf6, #458dfc);
   text-align: center;
   font-weight: normal;
+
+
 }
 
 /*Expediente Individual css*/
@@ -108,6 +110,9 @@ th{
   border-radius: 50%;
 }
 
+
+
+
 /*MenuUsuarios css*/
 
 
@@ -124,13 +129,16 @@ footer {
 }
 
 
+
+
+
 /*Registro Paciente css*/
 
-.titu{
+.titulo_registro_paciente{
   text-align: center;
   color: #458DFC;
-  margin-top: 50px;
-  margin-bottom: 10px;
+  margin-top: -100px;
+  
 }
 
 h2, h5{
@@ -138,37 +146,29 @@ h2, h5{
   color: gray;
   padding: 10px;
 }
-.App-header {
-  background-color: #fff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.encabezado2{
+
+.encabezado_registro_paciente{
   padding: 5%;
 }
 
 
-.formulario{
+.formulario_registro_paciente{
   color:black
   
-  
-  
 }
 
-.formi{
+.forumulario_datos_pacientes{
   width: 1000px;
-  margin-bottom: 20px;
+  
 }
 
-.boton{
-  padding: 20px;
+.boton_registro_paciente{
+  padding-top: 20px;
+  padding-bottom: 80px;
 }
+
+
 
 
 
@@ -176,8 +176,8 @@ h2, h5{
 .titulo_Agenda{
   text-align: center;
   color: #458DFC;
-  margin-top: 40px;
-  margin-bottom: 10px;
+  margin-top: -100px;
+  
 }
 
 
@@ -187,7 +187,7 @@ h2, h5{
   width: 1000px;
   position: relative; 
   background-color:#fff;
-
+  margin-top: -100px;
 }
 
 .negritas{
@@ -276,4 +276,102 @@ h5{
   text-align: center;
   
 }
+
+/*Menu paciente*/
+
+.encabezado_menu_paciente{
+  margin-top: -440px;
+}
+
+.contenedor_menu_paciente{
+  margin-top: -400px;
+  margin-bottom: 100px;
+}
+
+.titulo_encabezado{
+  color: #458dfc;
+}
+
+.botones_paciente{
+  border: 60px;
+  margin-top: 110px;
+  
+}
+
+.agendar_cita_paciente{
+  padding: 10px;
+  width: 380px;
+  float:right;
+
+
+}
+
+.ver_citas_paciente{
+  padding: 10px;
+  width: 380px;
+  float: right;
+
+  
+ 
+}
+
+.pregunta_paciente{
+  color: gray;
+}
+
+
+
+/*Menu experto*/
+.encabezado_menu_experto{
+  margin-top: -300px;
+  padding-bottom: 50px;
+  margin-bottom: 10%;
+}
+
+.bienvenida_experto{
+  color: #458DFC;
+}
+
+.pregunta_exeprto{
+  color: gray;
+}
+
+
+.menu_experto{
+  margin-top: -450px;
+}
+
+.botones_menu_experto{
+  margin-top: 70px;
+}
+
+
+.boton_editar_datos{
+  margin: 10px;
+  width: 400px;
+  float: right;
+
+  }
+
+.boton_ver_citas{
+  margin: 10px;
+  width: 400px;
+  float: right;
+
+
+}
+
+.boton_ver_expedientes{
+  margin: 10px;
+  width: 400px;
+  float: right;
+
+}
+
+.boton_admin{
+  margin: 10px;
+  width: 400px;
+  float: right;
+}
+
 
