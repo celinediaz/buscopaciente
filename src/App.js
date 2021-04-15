@@ -38,7 +38,7 @@ function App() {
           <ExpRoute path="/expedientes" component={ListaExpedientes} />
           <UserRoute path="/expediente" component = {ExpedienteIndividual} />
           <Route path="/registro" component = {MenuUsuarios}/>
-          <ExpRoute path="/experto" component={MenuExperto}/>
+          <Route path="/experto" component={MenuExperto}/>
           <Route path="/paciente" component={MenuPaciente}/>
           <Route path="/pagos" component={Pagos}/>
           <Route path="/registropaciente" component={RegistroPaciente}/>
