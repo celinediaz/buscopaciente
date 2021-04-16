@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Nav, Navbar, Image, Container, Row, Col, Button} from 'react-bootstrap'
+import React from 'react';
+import {Container, Row, Col, Button} from 'react-bootstrap'
 
 const MenuPaciente = () => {
    

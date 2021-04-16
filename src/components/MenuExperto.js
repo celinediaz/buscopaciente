@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button, Row, Col, Container, Navbar, Image, Nav } from 'react-bootstrap'
+import {Button, Row, Col, Container} from 'react-bootstrap'
 import {Link} from 'react-router-dom';
 
 const MenuExperto = () => {

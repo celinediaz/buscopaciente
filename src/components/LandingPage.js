@@ -1,8 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { Container, Row, Col, Image, Button, } from "react-bootstrap";
 import image from "./undraw_medicine.svg";
-import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext"
+import { Link} from "react-router-dom";
 
 const LandingPage = () => {
     return (

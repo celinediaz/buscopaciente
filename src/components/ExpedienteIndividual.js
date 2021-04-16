@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Image, Card, Form, Button, Col} from 'react-bootstrap';
+import React from 'react';
+import { Card, Form, Button, Col} from 'react-bootstrap';
 
 const ExpedienteIndividual = () => {
     const credenciales = [
