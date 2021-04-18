@@ -13,7 +13,7 @@ const MenuPaciente = () => {
       <Container>
         <Row>
           <Col className="align-self-center">
-            <Link to="/agendarcita">
+            <Link to="/agendarcitas">
               <Button className="my-2" size="lg" block>
                 Agendar cita
               </Button>

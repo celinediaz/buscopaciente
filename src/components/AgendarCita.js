@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Form, Modal, Button} from 'react-bootstrap'
 import moment from 'moment';
 import Calendar from './Calendar';
+import { useAuth } from "../contexts/AuthContext"
 
 const AgendarCita = () => {
-    const tipoDoctor = ['dentista', 'psicologo', 'médico']
+    const tipoDoctor = ['Medicina general', 'Psicología', 'Nutrición', 'Enfermería', 'Químico', 'Dentista'];
     const availableDates = [moment("2021 03 30", "YYYY MM DD"), moment("2021 04 02", "YYYY MM DD")];
     const [selectedDay, selectDay] = useState(availableDates[0]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (day) => setShow(true);
-
+    const {findPract} = useAuth();
+   const [practicantes, setPracticantes] = useState([]);
+   const [upd, setUp] = useState([]);
     function isAvailable(day) {
         for (let i = 0; i < availableDates.length; i++) {
             if (availableDates[i].isSame(day, "day")) return true;
@@ -30,6 +33,14 @@ const AgendarCita = () => {
             handleShow();
         }
     }
+    
+    function selectJob(job){
+        setPracticantes(findPract(job.target.value));
+        setUp([]);
+    }
+    function selectPract(prac){
+        
+    }
 
     return (
         <div>
@@ -40,16 +51,16 @@ const AgendarCita = () => {
 
                 <Form.Group controlId="exampleForm.ControlSelect1">
                     <Form.Label>Motivo de consulta</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select"  onChange={e => selectJob(e)}>
                     <option>Motivo de consulta</option>
                     {tipoDoctor.map((tipo, index) => (<option key={index} as="button">{tipo}</option>))}
                     </Form.Control>
                 </Form.Group>
                 <Form.Group controlId="exampleForm.ControlSelect2">
                     <Form.Label>Seleccionar doctor</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" onChange={e => selectPract(e)}>
                     <option>Seleccionar doctor</option>
-                    {tipoDoctor.map((tipo, index) => (<option key={index} as="button">{tipo}</option>))}
+                    {practicantes.map((practicante, index) => (<option key={index} as="button">{practicante.name}</option>))}
                     </Form.Control>
                 </Form.Group>
 
