@@ -33,7 +33,7 @@ function App() {
           <Route path="/signup" component ={Signup}/>
           <Route path="/signuppract" component ={SignupPract}/>
           <Route path="/login" component={Login}/>
-          <ExpRoute path="/vercitas" component={VerCitas}/>
+          <Route path="/vercitas" component={VerCitas}/>
           <Route path="/agendarcitas" component={AgendarCita}/>
           <ExpRoute path="/expedientes" component={ListaExpedientes} />
           <UserRoute path="/expediente" component = {ExpedienteIndividual} />

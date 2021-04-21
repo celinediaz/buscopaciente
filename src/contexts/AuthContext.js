@@ -22,6 +22,7 @@ export function AuthProvider({ children }) {
             uid: authResult.user.uid,
             email: email,
             role: role,
+            citas : [],
             ...other
         });
     return authResult;
@@ -40,6 +41,16 @@ export function AuthProvider({ children }) {
     setPrac(pracArr)
     })
     return pracArr;
+  }
+
+async function agendar(doctor, cita){
+    let doccitas = [];
+    await usersRef.doc(doctor).get().then(doc =>  doccitas.push(...doc.data().citas))
+    usersRef.doc(doctor)
+    .update({ citas: [{estado: "pending", fecha: cita, pacienteID: currentUserdb.uid}, ...doccitas]});
+   usersRef.doc(currentUserdb.uid)
+    .update({ citas: [{estado: "pending", fecha: cita, doctorID: doctor}, ...currentUserdb.citas]});
+    return cita;
   }
 
   useEffect(() => {
@@ -64,7 +75,8 @@ export function AuthProvider({ children }) {
     signup,
     login,
     logout,
-    findPract
+    findPract,
+    agendar
   }
 
   return (

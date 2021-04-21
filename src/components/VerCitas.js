@@ -3,12 +3,17 @@ import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Calendar from './Calendar';
+import { useAuth } from "../contexts/AuthContext"
 
 const VerCitas = () => {
     //example dates
-    const passedDates = [moment("2021 03 17", "YYYY MM DD"), moment("2021 03 22", "YYYY MM DD")];
-    const scheduledDates = [moment("2021 04 03", "YYYY MM DD"), moment("2021 04 09", "YYYY MM DD")];
-
+   const passedDates = [moment("2021 03 17", "YYYY MM DD"), moment("2021 03 22", "YYYY MM DD")];
+   //const scheduledDates = [moment("2021 04 03", "YYYY MM DD"), moment("2021 04 09", "YYYY MM DD")];
+   const {currentUserdb} = useAuth();
+   console.log(currentUserdb.citas)
+   const scheduledDates = currentUserdb.citas.map(citainfo => moment(citainfo.fecha, "YYYY MM DD H:mm"));
+  // console.log(citas);
+    //const scheduledDates = 
     //Only useful for this one
     const [selectedDay, selectDay] = useState(scheduledDates[0]);
     const [show, setShow] = useState(false);
