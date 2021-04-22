@@ -45,7 +45,7 @@ function App() {
           <Route path="/registropaciente" component={RegistroPaciente}/>
           <Route path="/editardatos" component={EditarDatosPaciente}/>
 
-          
+      
 
 
         </Switch>
