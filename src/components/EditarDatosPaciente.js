@@ -87,12 +87,12 @@ const EditarDatosPaciente = () => {
                       </Form.Group>
                     </Form.Row>
     
-                    <Form.Group controlId="formGridAddress1">
+                    <Form.Group controlId="nombre_paciente">
                       <Form.Label>Nombre:</Form.Label>
                       <Form.Control ref={nameRef} placeholder="Nombre completo" />
                     </Form.Group>
     
-                    <Form.Group controlId="formGridAddress2">
+                    <Form.Group controlId="enfermedades">
                       <Form.Label>Enfermedades o alergias:</Form.Label>
                       <Form.Control ref={descRef} placeholder="Ej: Soy diabetico/a " />
                     </Form.Group>
@@ -108,7 +108,7 @@ const EditarDatosPaciente = () => {
                         </Form.Control>
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="Datos">
+                        <Form.Group as={Col} controlId="datos">
                             <Form.Label>Numero telefonico:</Form.Label>
                             <Form.Control type="Dirección" placeholder="+52 826115896" />
 
