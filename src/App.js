@@ -12,6 +12,7 @@ import LandingPage from './components/LandingPage';
 import MenuUsuarios from './components/MenuUsuarios';
 import MenuExperto from './components/MenuExperto';
 import ExpRoute from './components/ExpRoute';
+import EditarDatosPaciente from './components/EditarDatosPaciente';
 import MenuPaciente from './components/MenuPaciente';
 import Pagos from './components/Pagos';
 import RegistroPaciente from './components/RegistroPaciente';
@@ -42,6 +43,7 @@ function App() {
           <Route path="/paciente" component={MenuPaciente}/>
           <Route path="/pagos" component={Pagos}/>
           <Route path="/registropaciente" component={RegistroPaciente}/>
+          <Route path="/editardatos" component={EditarDatosPaciente}/>
 
           
 

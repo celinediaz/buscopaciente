@@ -375,3 +375,19 @@ h5{
 }
 
 
+
+
+/*Editar Datos Paciente*/
+.contenedor_editardatos{
+  background-color: greenyellow;
+  margin-bottom: 100px;
+}
+
+.boton_guardar_cambios{
+background-color: hotpink;
+}
+
+.boton_borrar_cuenta{
+  margin: 5px;
+  background-color: blue;
+}
