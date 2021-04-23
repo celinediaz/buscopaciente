@@ -108,7 +108,7 @@ th{
   border-radius: 50%;
 }
 
-/*MenuUsuarios css*/
+
 
 
 /*Footer css*/
@@ -276,5 +276,21 @@ h5{
   font-weight: initial;
   text-align: center;
   
+}
+
+
+
+
+
+
+/*Editar Datos Paciente*/
+.contenedor_editardatos{
+  margin-bottom: 100px;
+}
+
+
+
+.boton_borrar_cuenta{
+  margin: 5px;
 }
 

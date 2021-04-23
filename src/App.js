@@ -16,6 +16,7 @@ import MenuPaciente from './components/MenuPaciente';
 import Pagos from './components/Pagos';
 import RegistroPaciente from './components/RegistroPaciente';
 import UserRoute from './components/UserRoute';
+import EditarDatosPaciente from './components/EditarDatosPaciente';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from "./contexts/AuthContext";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -41,7 +42,9 @@ function App() {
           <Route path="/experto" component={MenuExperto}/>
           <Route path="/paciente" component={MenuPaciente}/>
           <Route path="/pagos" component={Pagos}/>
-          <Route path="/signuppaciente" component={RegistroPaciente}/>
+          <Route path="/registropaciente" component={RegistroPaciente}/>
+          <Route path="/editardatos" component={EditarDatosPaciente}/>
+          <Route path="/signuppaciente" component={RegistroPaciente}/>i
 
         </Switch>
         </AuthProvider>
