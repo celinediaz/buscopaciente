@@ -8,7 +8,7 @@ export default function ExpRoute({component: Component, ...rest}) {
         <Route
         {...rest}
         render={props => {
-           return (currentUserdb && currentUserdb.role =="prac" ) ? <Component {...props}/> : <Redirect to ="/" />
+           return (currentUserdb && currentUserdb.role ==="prac" ) ? <Component {...props}/> : <Redirect to ="/" />
         }}
         >
         </Route>

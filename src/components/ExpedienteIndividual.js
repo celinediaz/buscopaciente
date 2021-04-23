@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Image, Card, Form, Button, Col} from 'react-bootstrap';
+import React from 'react';
+import { Card, Form, Button, Col} from 'react-bootstrap';
+import { useAuth } from "../contexts/AuthContext"
 
 const ExpedienteIndividual = () => {
+    const {currentUserdb} = useAuth()
     const credenciales = [
         {
             foto: "https://picsum.photos/171/180", nombre: "Adriana Lisette García Garza"
         },
-
-
     ]
 
     const renderPacienteCard = (credencial, index) => {
@@ -17,62 +17,52 @@ const ExpedienteIndividual = () => {
                 <Card className="tarjeta text-center justify-content-center">
                     <Card.Img className="img " variant="center top" src={credencial.foto} roundedCircle />
                     <Card.Body>
-                        <Card.Title className="justify-content-center">{credencial.nombre}</Card.Title>
+                        <Card.Title className="justify-content-center">{currentUserdb.name}</Card.Title>
                     </Card.Body>
                 </Card>
             </div>
         )
     }
 
-    const pacientes = [
-        {
-            fechanac: "09 junio 2001", edad: "10", estadocivil: "Soltera", domicilio: "calle rosita #123 Col.Maranatha, Montemorelos, N.L.",
-            correo: "nana@gmial.com", tel: "82612345678", religion: "Adventista", issues: "Alergias, ansiedad, estrés",
-            notas: "Alergias, ansiedad, estrés"
-        },
-
-
-    ]
-
-    const renderPaciente = (paciente, index) => {
+    const renderPaciente = () => {
         return (
             <div>
-                <Card className="card container d-flex flex-wrap " key={index}>
+                <Card className="card container d-flex flex-wrap ">
                     <div className="p-2 border">
                         <h6>Fecha de nacimiento: </h6>
-                        <p>{paciente.fechanac}</p>
+                        <p>{currentUserdb.birth}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Edad: </h6>
-                        <p>{paciente.edad}</p>
+                        <p>{currentUserdb.age}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Estado civil: </h6>
-                        <p>{paciente.estadocivil}</p>
+                        <p>{currentUserdb.maritalStatus}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Correo electrónico: </h6>
-                        <p>{paciente.correo}</p>
+                        <p>{currentUserdb.email}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Teléfono: </h6>
-                        <p>{paciente.tel}</p>
+                        <p>{currentUserdb.tel}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Domicilio: </h6>
-                        <p>{paciente.domicilio}</p>
+                        <p>{currentUserdb.address}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Religión: </h6>
-                        <p>{paciente.religion}</p>
+                        <p>{currentUserdb.religion}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Antecedentes médicos: </h6>
-                        <p>{paciente.issues}</p>
+                        <p>{currentUserdb.illnesses}</p>
                     </div>
                     <div className="p-2 border">
                         <h6>Notas añadidas: </h6>
-                        <p>{paciente.notas}</p>
+                        <p>{currentUserdb.notes}</p>
                     </div>
                 </Card>
             </div>
@@ -89,7 +79,7 @@ const ExpedienteIndividual = () => {
                         {credenciales.map(renderPacienteCard)}
                     </div>
                     <div className="align-self-center flex-grow-1">
-                        {pacientes.map(renderPaciente)}
+                        {renderPaciente()}
                     </div>
                 </div>
                 <br />

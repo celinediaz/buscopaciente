@@ -10,6 +10,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
+  const [prac, setPrac] = useState([])
   const [currentUserdb, setCurrentUserdb] = useState()
   const usersRef = db.collection('users');
   const [loading, setLoading] = useState(true);
@@ -32,12 +33,20 @@ export function AuthProvider({ children }) {
     return auth.signOut()
   }
 
+  function findPract(job){
+    let pracArr = [];
+    usersRef.where('job', '==', job).get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {pracArr.push({...(doc.data())})})
+    setPrac(pracArr)
+    })
+    return pracArr;
+  }
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged( async user => {
       if(user){
       setCurrentUser(user);
       let userdb = {};
-      console.log(user)
       await usersRef.where('uid', '==', user.uid).get().then((snapshot) => {
         snapshot.docs.forEach(doc => {userdb = {...userdb, ...(doc.data()) } } )
         setCurrentUserdb(userdb)
@@ -54,7 +63,8 @@ export function AuthProvider({ children }) {
     currentUserdb,
     signup,
     login,
-    logout
+    logout,
+    findPract
   }
 
   return (

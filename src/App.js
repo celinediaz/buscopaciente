@@ -30,7 +30,7 @@ function App() {
     <AuthProvider>
       <Navb />
         <Switch>
-          <Route exact path="/" component = {LandingPage}/>
+          <Route exact path="/inicio" component = {LandingPage}/>
           <Route path="/signup" component ={Signup}/>
           <Route path="/signuppract" component ={SignupPract}/>
           <Route path="/login" component={Login}/>
@@ -44,9 +44,7 @@ function App() {
           <Route path="/pagos" component={Pagos}/>
           <Route path="/registropaciente" component={RegistroPaciente}/>
           <Route path="/editardatos" component={EditarDatosPaciente}/>
-
-      
-
+          <Route path="/signuppaciente" component={RegistroPaciente}/>i
 
         </Switch>
         </AuthProvider>

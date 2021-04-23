@@ -1,41 +1,43 @@
-import React, { useState } from 'react';
-import {Nav, Navbar, Image, Container, Row, Col, Button} from 'react-bootstrap'
+import React from 'react';
+import { Container, Row, Col, Button, Image } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import image from "./undraw_medicine.svg";
 
 const MenuPaciente = () => {
-   
-    return (
-      <div className="App">
-      <header className="App-header">
 
-        <div class="encabezado_menu_paciente">
-          <h1 class="titulo_encabezado">Bienvenido a BuscoPaciente</h1>
-          <h3 className="pregunta_paciente">¿Qué deseas hacer? </h3>
-        </div>
-        
-      </header>
+  return (
+    <div className="App">
 
-      <div className="contenedor_menu_paciente">
-        <Container>
-        <Row xs={2} md={2} lg={2}>
-            <div className="botones_paciente">
-            <Col> 
-              <div className="agendar_cita_paciente"><Button variant="primary" size="lg" block>Agendar cita </Button> </div>
-              <div className="ver_citas_paciente"><Button variant="primary" size="lg" block >Ver mis citas</Button> </div>
-            </Col>
-            </div>
+      <h1>Bienvenido a BuscoPaciente</h1>
+      <h2>¿Qué deseas hacer?</h2>
+      <Container>
+        <Row>
+          <Col className="align-self-center">
+            <Link to="/agendarcitas">
+              <Button className="my-2" size="lg" block>
+                Agendar cita
+              </Button>
+            </Link>
+            <Link to="/vercitas">
+              <Button className="my-2" size="lg" block>
+                Ver mis citas
+              </Button>
+            </Link>
+            <Link to="/expediente">
+              <Button className="my-2" size="lg" block>
+                Ver expediente
+              </Button>
+            </Link>
+          </Col>
 
-            <Col> 
-            <img src="https://1.bp.blogspot.com/-7pjLpsqvE4E/YGs0KPKnPMI/AAAAAAAAAX0/E_or4WsbUhomRTGdODJq2ysy7UGt7g09gCLcBGAsYHQ/w474-h337/undraw_doctor_kw5l.png" width="600" height="400"/>
-
-            </Col>
-
-          </Row>
-        </Container>
-      </div>
-
+          <Col>
+            <Image src={image} width="90%" />
+          </Col>
+        </Row>
+      </Container>
     </div>
-  
-    )
+
+  )
 }
 
 export default MenuPaciente

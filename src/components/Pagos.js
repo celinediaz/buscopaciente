@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Button, Breadcrumb, Card, Form, Row, Col, Container, Navbar, Image, Nav, H1 } from 'react-bootstrap'
+import React from 'react';
+import { Button,Form, Row, Col, Container} from 'react-bootstrap'
 
 const Pagos = () => {
    

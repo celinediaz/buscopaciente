@@ -32,7 +32,7 @@ const SignupPract = () => {
       setLoading(false);
   }
     const tipoDoctor = ['Medicina general', 'Psicología', 'Nutrición', 'Enfermería', 'Químico', 'Dentista']
-    const estado = ['Nuevo León', 'Tabasco', 'Sinaloa']
+    const estado = ['Nuevo León', 'Chiapas', 'Sinaloa']
     const precio = ['Gratis', '$50', '$100', '$150', '$200', '$250']
 
     const credenciales = [
@@ -63,9 +63,9 @@ const SignupPract = () => {
     
       return (
         <div className="App">
-              <h1>Registrarse</h1>
+              <h1>Registrarse como practicante</h1>
     
-            <div class="container mt-3">
+            <div className="container my-3 pb-5">
               <div className="d-flex flex-row mb-2 justify-content-center flex-fill">
     
                 <div className="p-2  align-self-center">
@@ -171,7 +171,7 @@ const SignupPract = () => {
                         </Form.Text>
                       </Form.Group>
                     </Form.Row>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" disabled={loading}>
                       Guardar cambios
                     </Button>
                   </Form>
