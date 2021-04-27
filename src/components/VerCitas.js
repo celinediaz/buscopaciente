@@ -4,46 +4,42 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Calendar from './Calendar';
 import { useAuth } from "../contexts/AuthContext"
+import {Link} from 'react-router-dom';
 
 const VerCitas = () => {
-    //example dates
-   const passedDates = [moment("2021 03 17", "YYYY MM DD"), moment("2021 03 22", "YYYY MM DD")];
-   //const scheduledDates = [moment("2021 04 03", "YYYY MM DD"), moment("2021 04 09", "YYYY MM DD")];
-   const {currentUserdb} = useAuth();
-   console.log(currentUserdb.citas)
-   const scheduledDates = currentUserdb.citas.map(citainfo => moment(citainfo.fecha, "YYYY MM DD H:mm"));
-  // console.log(citas);
-    //const scheduledDates = 
-    //Only useful for this one
+
+    const { currentUserdb, queriedUserdb, queryUserInfo, queriedAppointdb, queryAppointInfo, changeState } = useAuth();
+    let scheduledDates = queriedAppointdb && queriedAppointdb.map(citainfo => moment(citainfo.fecha, "YYYY MM DD H:mm"));
+    if (!scheduledDates){scheduledDates = [moment(new Date(), "YYYY MM DD H:mm")]}
     const [selectedDay, selectDay] = useState(scheduledDates[0]);
+    const [selectedDayinfo, selectDayinfo] = useState(currentUserdb.citas[0]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (day) => setShow(true);
-
-    function isPending(day) {
+    const [upd, setUp] = useState([]);
+    function dayStyle(day) {
         for (let i = 0; i < scheduledDates.length; i++) {
-            if (scheduledDates[i].isSame(day, "day")) {
-                return true;
+            if (scheduledDates[i].isSame(day, "day") && scheduledDates[i].isBefore(new Date(), "day")) {
+                return "passed day-container";
+            }
+            else if (scheduledDates[i].isSame(day, "day")) {
+                return "pending day-container";
             }
         }
-        return false;
-    }
-    function hasPassed(day) {
-        for (let i = 0; i < passedDates.length; i++) {
-            if (passedDates[i].isSame(day, "day")) return true;
-        }
-        return false;
-    }
-    function dayStyle(day) {
-        if (isPending(day)) return "pending day-container";
-        if (hasPassed(day)) return "passed day-container";
         return "day-container"
     }
 
+
     function onSelect(day) {
-        if (isPending(day)) {
-            selectDay(day);
-            console.log(selectedDay);
+        if (dayStyle(day) === "pending day-container" || dayStyle(day) === "passed day-container") {
+            let usuario;
+            for (let i = 0; i < scheduledDates.length; i++) {
+                if (scheduledDates[i].isSame(day, "day")){
+                   selectDayinfo(queriedAppointdb[i]);
+                   selectDay(scheduledDates[i].format('DD MMM YYYY, h:mm a'))
+                   currentUserdb.role === "prac"  ? queryUserInfo(queriedAppointdb[i].pacienteID) : queryUserInfo(queriedAppointdb[i].doctorID);
+                }
+            }
             handleShow();
         }
     }
@@ -54,27 +50,34 @@ const VerCitas = () => {
             <p className="desc">Selecciona los días marcados en azul para ver el horario de la cita</p>
             <div className="container">
                 <div className="calendar">
-                    <Calendar onSelect={onSelect} dayStyle={dayStyle} />
-                    <Modal show={show} onHide={handleClose} size="sm">
+                    <Calendar onSelect={onSelect} dayStyle={dayStyle}/>
+                    <Modal show={show} onHide={handleClose} size="sm" animation={false}>
                         <Modal.Header closeButton>
                             <Modal.Title>Horario</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <h1>Fecha: </h1><p>{selectedDay.format('MMMM Do YYYY, h:mm:ss a')}</p>
-                            <p> Su cita es {selectedDay.startOf('day').fromNow()}</p>
+                            <h2>Fecha: </h2><p>{ selectedDay }</p>
+                            <h2>Estado de cita: </h2>
+                            { currentUserdb.role === "user" && <p>El estado de la cita es {selectedDayinfo && selectedDayinfo.estado}</p> }
+                            {currentUserdb.role === "prac" && <Button className="mx-2" onClick={() => changeState(queriedUserdb.uid, selectedDayinfo.fecha, "confirmado")}  > Confirmar </Button> }
+                            {currentUserdb.role === "prac" && <Button className="mx-2" variant="danger" onClick={() => changeState(queriedUserdb.uid, selectedDayinfo.fecha, "cancelado")}  >Cancelar</Button>}
+                            {currentUserdb.role === "user" ?<h2>Doctor: </h2> : <h2>Paciente: </h2> }
+                            {currentUserdb.role === "user" ? <p>Su doctor es {queriedUserdb && queriedUserdb.name}</p>: <p>Su paciente es {queriedUserdb && queriedUserdb.name}</p>}
+                            {currentUserdb.role === "user" && <p>El motivo de su cita es {queriedUserdb && queriedUserdb.job}</p>}
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>
                                 Close
-                    </Button>
+                            </Button>
                         </Modal.Footer>
                     </Modal>
                 </div>
                 <div className="schedule-info">
                     <div className="day-info"><div className="pending day-container"></div>Próximas citas</div>
                     <div className="day-info"><div className="passed day-container"></div>Citas pasadas</div>
-                    <Button variant="primary">Regresar al menú</Button>
-                    <Button variant="primary">Añadir cita</Button>
+                </div>
+                <div className="calendar">
+                {currentUserdb.role === "user" && <Link to="/agendarcitas"> <Button className="my-2" block> Añadir cita </Button> </Link>}
                 </div>
             </div>
         </div>

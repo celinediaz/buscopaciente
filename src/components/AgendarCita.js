@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import {Form, Modal, Button} from 'react-bootstrap'
 import moment from 'moment';
 import Calendar from './Calendar';
@@ -6,7 +6,6 @@ import { useAuth } from "../contexts/AuthContext"
 
 const AgendarCita = () => {
     const tipoDoctor = ['Medicina general', 'Psicología', 'Nutrición', 'Enfermería', 'Químico', 'Dentista'];
-    //const availableDates = [moment("2021 03 30", "YYYY MM DD"), moment("2021 04 02", "YYYY MM DD")];
     const horario = ['6:00', '7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00']
     const [selectedDay, selectDay] = useState(moment());
     const [show, setShow] = useState(false);
@@ -17,24 +16,13 @@ const AgendarCita = () => {
    const [hora, setHora] = useState([]);
    const [practicante, setPracticante] = useState([]);
    const [upd, setUp] = useState([]);
-   const horarioRef =useRef();
-    /*function isAvailable(day) {
-        for (let i = 0; i < availableDates.length; i++) {
-            if (availableDates[i].isSame(day, "day")) return true;
-        }
-        return false;
-    }*/
-
     function dayStyle(day) {
-       // if (isAvailable(day)) return "available day-container";
         return "available day-container"
     }
 
     function onSelect(day) {
-       // if (isAvailable(day)) {
             selectDay(day);
             handleShow();
-      //  }
     }
     
     function selectJob(job){
@@ -49,9 +37,7 @@ const AgendarCita = () => {
         setHora(horario.target.value);
         setUp([]);
     }
-   /* function handleSubmit(e){
-        e.preventDefault()
-    }*/
+
    async function handleSubmit(e){
         e.preventDefault()
         try{
@@ -89,7 +75,7 @@ const AgendarCita = () => {
             </div>
             <div className="calendar">
                 <Calendar onSelect={onSelect} dayStyle={dayStyle} />
-                <Modal show={show} onHide={handleClose} size="sm">
+                <Modal show={show} onHide={handleClose} size="sm" animation={false}>
                 <Form onSubmit={handleSubmit}>
                         <Modal.Header closeButton>
                             <Modal.Title>Horario</Modal.Title>

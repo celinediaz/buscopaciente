@@ -12,6 +12,7 @@ import LandingPage from './components/LandingPage';
 import MenuUsuarios from './components/MenuUsuarios';
 import MenuExperto from './components/MenuExperto';
 import ExpRoute from './components/ExpRoute';
+import PrivRoute from './components/PrivRoute';
 import MenuPaciente from './components/MenuPaciente';
 import Pagos from './components/Pagos';
 import RegistroPaciente from './components/RegistroPaciente';
@@ -34,13 +35,13 @@ function App() {
           <Route path="/signup" component ={Signup}/>
           <Route path="/signuppract" component ={SignupPract}/>
           <Route path="/login" component={Login}/>
-          <Route path="/vercitas" component={VerCitas}/>
+          <PrivRoute path="/vercitas" component={VerCitas}/>
           <Route path="/agendarcitas" component={AgendarCita}/>
           <ExpRoute path="/expedientes" component={ListaExpedientes} />
           <UserRoute path="/expediente" component = {ExpedienteIndividual} />
           <Route path="/registro" component = {MenuUsuarios}/>
-          <Route path="/experto" component={MenuExperto}/>
-          <Route path="/paciente" component={MenuPaciente}/>
+          <ExpRoute path="/experto" component={MenuExperto}/>
+          <UserRoute path="/paciente" component={MenuPaciente}/>
           <Route path="/pagos" component={Pagos}/>
           <Route path="/registropaciente" component={RegistroPaciente}/>
           <Route path="/editardatos" component={EditarDatosPaciente}/>
