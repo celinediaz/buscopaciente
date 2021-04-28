@@ -12,7 +12,7 @@ const MenuExperto = () => {
       <Container>
         <Row>
           <Col className="align-self-center">
-            <Link to="/">
+            <Link to="/editardatosexperto">
               <Button className="my-2" size="lg" block>
                 Editar mis datos
               </Button>
@@ -27,6 +27,7 @@ const MenuExperto = () => {
                 Ver expedientes
               </Button>
             </Link>
+            
           </Col>
 
           <Col>

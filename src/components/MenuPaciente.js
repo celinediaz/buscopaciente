@@ -23,9 +23,9 @@ const MenuPaciente = () => {
                 Ver mis citas
               </Button>
             </Link>
-            <Link to="/expediente">
+            <Link to="/editardatos">
               <Button className="my-2" size="lg" block>
-                Ver expediente
+                Editar datos
               </Button>
             </Link>
           </Col>

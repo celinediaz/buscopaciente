@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -10,15 +10,15 @@ const VerCitas = () => {
 
     const { currentUserdb, queriedUserdb, queryUserInfo, queriedAppointdb, queryAppointInfo, changeState } = useAuth();
     let scheduledDates = queriedAppointdb && queriedAppointdb.map(citainfo => moment(citainfo.fecha, "YYYY MM DD H:mm"));
-    if (!scheduledDates){scheduledDates = [moment(new Date(), "YYYY MM DD H:mm")]}
-    const [selectedDay, selectDay] = useState(scheduledDates[0]);
-    const [selectedDayinfo, selectDayinfo] = useState(currentUserdb.citas[0]);
+    const [selectedDay, selectDay] = useState(scheduledDates && scheduledDates[0]);
+    const [selectedDayinfo, selectDayinfo] = useState(queriedAppointdb && queriedAppointdb[0]);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (day) => setShow(true);
-    const [upd, setUp] = useState([]);
+
+
     function dayStyle(day) {
-        for (let i = 0; i < scheduledDates.length; i++) {
+        for (let i = 0; scheduledDates && i < scheduledDates.length; i++) {
             if (scheduledDates[i].isSame(day, "day") && scheduledDates[i].isBefore(new Date(), "day")) {
                 return "passed day-container";
             }
@@ -31,8 +31,7 @@ const VerCitas = () => {
 
 
     function onSelect(day) {
-        if (dayStyle(day) === "pending day-container" || dayStyle(day) === "passed day-container") {
-            let usuario;
+        if ((dayStyle(day) === "pending day-container" || dayStyle(day) === "passed day-container")) {
             for (let i = 0; i < scheduledDates.length; i++) {
                 if (scheduledDates[i].isSame(day, "day")){
                    selectDayinfo(queriedAppointdb[i]);
@@ -43,6 +42,9 @@ const VerCitas = () => {
             handleShow();
         }
     }
+    useEffect(() => {
+        queryAppointInfo(currentUserdb);
+      }, []);
 
     return (
         <div>

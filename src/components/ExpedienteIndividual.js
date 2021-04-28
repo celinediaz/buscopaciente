@@ -4,25 +4,8 @@ import { useAuth } from "../contexts/AuthContext"
 
 const ExpedienteIndividual = () => {
     const {currentUserdb} = useAuth()
-    const credenciales = [
-        {
-            foto: "https://picsum.photos/171/180", nombre: "Adriana Lisette García Garza"
-        },
-    ]
 
-    const renderPacienteCard = (credencial, index) => {
-        return (
-            <div key={index}>
-
-                <Card className="tarjeta text-center justify-content-center">
-                    <Card.Img className="img " variant="center top" src={credencial.foto} roundedCircle />
-                    <Card.Body>
-                        <Card.Title className="justify-content-center">{currentUserdb.name}</Card.Title>
-                    </Card.Body>
-                </Card>
-            </div>
-        )
-    }
+  
 
     const renderPaciente = () => {
         return (
@@ -76,25 +59,22 @@ const ExpedienteIndividual = () => {
             <div class="container mt-3">
                 <div className="d-flex flex-row mb-2 justify-content-center flex-fill">
                     <div className="p-2  align-self-center">
-                        {credenciales.map(renderPacienteCard)}
-                    </div>
-                    <div className="align-self-center flex-grow-1">
-                        {renderPaciente()}
-                    </div>
-                </div>
-                <br />
-                <div className="text-center  justify-content-center">
                     <Form.Group size="md" controlId="exampleForm.ControlTextarea1">
                         <h5>Añadir notas sobre el paciente: </h5>
                         <br />
-                        <Form.Control as="textarea" rows={7} />
+                        <Form.Control as="textarea" rows={12} />
                     </Form.Group>
                     <Col>
                         <Button type="submit" className="mb-2">
                             Agregar notas
                         </Button>
                     </Col>
+                    </div>
+                    <div className="align-self-center flex-grow-1">
+                        {renderPaciente()}
+                    </div>
                 </div>
+                <br />
             </div>
         </div>
     )

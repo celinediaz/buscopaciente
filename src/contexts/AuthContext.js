@@ -77,6 +77,7 @@ export function AuthProvider({ children }) {
         fecha: cita
       });
     }
+    queryAppointInfo(currentUserdb);
   }
 
   async function queryUserInfo(user) {
@@ -87,6 +88,20 @@ export function AuthProvider({ children }) {
     })
     return userdb;
   }
+
+  function updateUserInfo(datos){
+    let changedInfo = {}
+    console.log(datos)
+    for(const key in datos){
+      if(datos[key]!==""){
+        changedInfo[key] = datos[key]
+      }
+    }
+    usersRef.doc(currentUserdb.uid).update({
+      ...changedInfo
+    })
+  }
+
   async function queryAppointInfo(userdb) {
     let appointmentdb = [];
     if (userdb.role === "user") {
@@ -113,7 +128,7 @@ export function AuthProvider({ children }) {
           snapshot.docs.forEach(doc => { userdb = { ...userdb, ...(doc.data()) } })
           setCurrentUserdb(userdb)
         })
-        queryAppointInfo(userdb);
+       // queryAppointInfo(userdb);
       }
       setLoading(false);
     })
@@ -133,7 +148,8 @@ export function AuthProvider({ children }) {
     agendar,
     queryUserInfo,
     queryAppointInfo,
-    changeState
+    changeState,
+    updateUserInfo
   }
 
   return (

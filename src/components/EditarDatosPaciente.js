@@ -1,151 +1,86 @@
 import React, {useRef, useState} from 'react'
-import {Card, Form, Button, Col} from 'react-bootstrap';
+import {Form, Button, Col, Row} from 'react-bootstrap';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom";
 
 const EditarDatosPaciente = () => {
-  const emailRef =useRef();
-  const passRef =useRef();
-  const nameRef =useRef();
-  const descRef =useRef();
-  const jobRef =useRef();
-  const stateRef =useRef();
-  const priceRef =useRef();
-  const horarioRef =useRef();
-  const {signup} = useAuth()
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const history = useHistory();
-
-  async function handleSubmit(e){
+    const nameRef =useRef();
+    const maritalRef =useRef();
+    const ageRef =useRef();
+    const religionRef =useRef();
+    const numberRef =useRef();
+    const birthRef =useRef();
+    const addressRef =useRef();
+    const lastnameRef =useRef();
+    const illnessRef =useRef();
+    const {updateUserInfo} = useAuth()
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
+    function handleSubmit(e){
       e.preventDefault()
       try{
-          setError("") 
+          setError("")
           setLoading(true)
-          let otherRef = {name: nameRef.current.value, desc: descRef.current.value, job: jobRef.current.value, state: stateRef.current.value, horario: horarioRef.current.value, price: priceRef.current.value}
-          await signup(emailRef.current.value, passRef.current.value, "prac", otherRef) 
-          history.push("/")
+          let otherRef = {name: nameRef.current.value, maritalStatus: maritalRef.current.value, age: ageRef.current.value, religion: religionRef.current.value, birth: birthRef.current.value, lastname: lastnameRef.current.value, illnesses: illnessRef.current.value, address: addressRef.current.value, phone: numberRef.current.value}
+          updateUserInfo(otherRef) 
+          history.push("/") 
       } catch {
           console.log("error")
-          setError("No se ha podido crear la cuenta")
+          setError("No se ha podido editar la cuenta")
       }
       setLoading(false);
   }
-    const estado_civil = ['Soltero', 'Casado']
-    const religion = ['Adventista del septimo día', 'Catolico', 'Otra']
    
+    return (
+      <div className="App">
+  
+      <h1>Editar mis datos</h1>
 
-    const credenciales = [
-        {
-          foto: "https://picsum.photos/171/180", nombre: "Adriana Lisette García Garza"
-        },
-      ]
-    
-      const renderPacienteCard = (credencial, index) => {
-        return (
-          <div key={index}>
-    
-            <Card className="tarjeta text-center justify-content-center">
-              <Card.Img className="img " variant="center top" src={credencial.foto} roundedCircle />
-              <Card.Body>
-                <Card.Title className="justify-content-center">{credencial.nombre}</Card.Title>
-              </Card.Body>
-              <Form>
-                <Form.Group>
-                  <Form.File id="exampleFormControlFile1" className="btn-sm"/>
-                </Form.Group>
-              </Form>
-            </Card>
-          </div>
-        )
-      }
-    
-    
-      return (
-        <div className="App">
-              <h1>Editar mis datos </h1>
-    
-            <div class="contenedor_editardatos">
-              <div className="d-flex flex-row mb-2 justify-content-center flex-fill">
-    
-                <div className="p-2  align-self-center">
-                  {credenciales.map(renderPacienteCard)}
-    
-                </div>
-    
-                <div className="align-self-center flex-grow-1">
-                  <Form onSubmit={handleSubmit}>
-                    <Form.Row>
-                      <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Correo electrónico:</Form.Label>
-                        <Form.Control type="email" ref={emailRef} placeholder="Correo electrónico" />
-                      </Form.Group>
-    
-                      <Form.Group as={Col} controlId="formGridPassword">
-                        <Form.Label>Contraseña:</Form.Label>
-                        <Form.Control type="password" ref={passRef} placeholder="Contraseña" />
-                      </Form.Group>
-                    </Form.Row>
-    
-                    <Form.Group controlId="nombre_paciente">
-                      <Form.Label>Nombre:</Form.Label>
-                      <Form.Control ref={nameRef} placeholder="Nombre completo" />
-                    </Form.Group>
-    
-                    <Form.Group controlId="enfermedades">
-                      <Form.Label>Enfermedades o alergias:</Form.Label>
-                      <Form.Control ref={descRef} placeholder="Ej: Soy diabetico/a " />
-                    </Form.Group>
+        <div class='formulario'>
 
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="Fecha_nacimiento">
-                            <Form.Label>Fecha de nacimiento:</Form.Label>
-                            <Form.Control type="fecha" placeholder="dd/mm/aaaa" />
-                            
-                            <Form.Label>Estado civil:</Form.Label>
-                            <Form.Control as="select" defaultValue="soltero/a" ref={jobRef}>
-                          {estado_civil.map((tipo, index) => (<option key={index} as="button">{tipo}</option>))}
-                        </Form.Control>
-                        </Form.Group>
+          <Form className="formi" onSubmit={handleSubmit}>
+            <Row>
+              <Col>
+                <Form.Label class="Name">Nombre(s):</Form.Label>
+                <Form.Control ref={nameRef} placeholder="Ej. Adriana" />
 
-                        <Form.Group as={Col} controlId="datos">
-                            <Form.Label>Numero telefonico:</Form.Label>
-                            <Form.Control type="Dirección" placeholder="+52 826115896" />
+                <Form.Label>Fecha de nacimiento:</Form.Label>
+                <Form.Control ref={birthRef} placeholder="Ej. 9 de junio 2001" />
 
-                            <Form.Label>Religión:</Form.Label>
-                            <Form.Control as="select" defaultValue="Otro">
-                            {religion.map((tipo, index) => (<option key={index} as="button">{tipo}</option>))}
-                        </Form.Control>
-                        </Form.Group>
+                <Form.Label>Religión:</Form.Label>
+                <Form.Control ref={religionRef} placeholder="Ej. Católica" />
+                <Form.Label>Edad:</Form.Label>
+                <Form.Control ref={ageRef} placeholder="Ej. 19" />
+                <Form.Label>Número:</Form.Label>
+                <Form.Control ref={numberRef}placeholder="8675309" />
 
-                    </Form.Row>
-    
-                    <Form.Group>
-                        <Form.Label>Dirección:</Form.Label>
-                        <Form.Control placeholder="Dirección completa con #" />
+              </Col>
 
-                    </Form.Group>
-    
-                    
+              <Col>
+                <Form.Label>Apellidos:</Form.Label>
+                <Form.Control ref={lastnameRef} placeholder="Ej. García" />
 
-                    <div className="boton_guardar_cambios">
-                    <Button variant="primary" type="submit">
-                      Guardar cambios
-                    </Button>
-                    </div>
-                    <div className="boton_borrar_cuenta">
-                    <Button variant="danger" type="submit">
-                      Borrar cuenta
-                    </Button>
-                    </div>
+                <Form.Label>Dirección:</Form.Label>
+                <Form.Control ref={addressRef} placeholder="Ej. Callecita 134 Colonia Rosita" />
 
-                    
-                  </Form>
-                </div>
-              </div>
-              <br />
-            </div>
+                <Form.Label>Enfermedades o alergias</Form.Label>
+                <Form.Control ref={illnessRef} placeholder="Ej. Alergia al chocolate, asma, ansiedad" />
+
+                <Form.Label>Estado Civil:</Form.Label>
+                <Form.Control ref={maritalRef} placeholder="Ej. Soltera" />
+
+            
+
+              </Col>
+            </Row>
+            <Button variant="primary" type="submit" disabled={loading} className="my-2">Siguiente</Button>
+          </Form>
+
+
         </div>
+ 
+    </div>
     )
 }
 

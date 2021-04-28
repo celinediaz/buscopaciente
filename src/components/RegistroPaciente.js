@@ -9,6 +9,7 @@ const RegistroPaciente = () => {
     const nameRef =useRef();
     const maritalRef =useRef();
     const ageRef =useRef();
+    const numberRef =useRef();
     const religionRef =useRef();
     const birthRef =useRef();
     const addressRef =useRef();
@@ -23,7 +24,7 @@ const RegistroPaciente = () => {
       try{
           setError("")
           setLoading(true)
-          let otherRef = {name: nameRef.current.value, maritalStatus: maritalRef.current.value, age: ageRef.current.value, religion: religionRef.current.value, birth: birthRef.current.value, lastname: lastnameRef.current.value, illnesses: illnessRef.current.value, address: addressRef.current.value}
+          let otherRef = {name: nameRef.current.value, maritalStatus: maritalRef.current.value, age: ageRef.current.value, religion: religionRef.current.value, birth: birthRef.current.value, lastname: lastnameRef.current.value, illnesses: illnessRef.current.value, address: addressRef.current.value, phone: numberRef.current.value}
           await signup(emailRef.current.value, passRef.current.value, "user", otherRef) 
           history.push("/") 
       } catch {
@@ -63,8 +64,8 @@ const RegistroPaciente = () => {
                 <Form.Label>Apellidos:</Form.Label>
                 <Form.Control ref={lastnameRef} placeholder="Ej. García" />
 
-                <Form.Label>Dirección:</Form.Label>
-                <Form.Control ref={addressRef} placeholder="Ej. Callecita 134 Colonia Rosita" />
+                <Form.Label>Número:</Form.Label>
+                <Form.Control ref={numberRef} placeholder="8675309" />
 
                 <Form.Label md>Enfermedades o alergias</Form.Label>
                 <Form.Control ref={illnessRef} placeholder="Ej. Alergia al chocolate, asma, ansiedad" />
@@ -76,6 +77,9 @@ const RegistroPaciente = () => {
                 <Form.Control ref={ageRef}placeholder="Ej. 19" />
               </Col>
             </Row>
+            <Form.Label>Dirección:</Form.Label>
+                <Form.Control ref={addressRef} placeholder="Ej. Callecita 134 Colonia Rosita" />
+
             <Button variant="primary" type="submit" disabled={loading} className="my-2">Siguiente</Button>
           </Form>
 
