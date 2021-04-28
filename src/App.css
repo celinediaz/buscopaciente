@@ -9,6 +9,28 @@ h1 {
 }
 
 
+
+
+/* LandingPage*/
+
+.equipo{
+  height: 200px;
+  color: black;
+}
+.quienes_somos{
+  padding-top: 100px;
+}
+.texto_quienes_somos{
+  text-align: center;
+  font-size: large;
+}
+
+.imagenes_experto{
+  height: 400px;
+}
+
+
+
 /* Calendar Styling*/
 
 .container {
@@ -16,6 +38,9 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.titulo_equipo{
+  color: black;
 }
 .calendar {
   width: 40vw;
@@ -293,4 +318,5 @@ h5{
 .boton_borrar_cuenta{
   margin: 5px;
 }
+
 
