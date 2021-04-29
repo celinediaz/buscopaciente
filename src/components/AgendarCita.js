@@ -36,7 +36,7 @@ const AgendarCita = () => {
         setUp([]);
     }
     function selectPract(prac){
-        setPracticante({name: prac.target.value, uid: prac.target.options[1].getAttribute('data-uid')});
+        setPracticante({name: prac.target.value, uid: prac.target.options[prac.target.selectedIndex].getAttribute('data-uid')});
         setUp([]);
     }
     function selectHorario(horario){
@@ -49,7 +49,7 @@ const AgendarCita = () => {
         try{
             //setLoading(true)
             const cita = moment(selectedDay.format('YYYY MM DD') + " " + hora, "YYYY MM DD H:mm").format('YYYY MM DD H:mm');
-            await agendar(practicante.uid, cita)
+           await agendar(practicante.uid, cita)
         } catch {
             console.log("error")
         }
