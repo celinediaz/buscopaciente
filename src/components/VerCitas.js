@@ -8,13 +8,8 @@ import {Link} from 'react-router-dom';
 
 const VerCitas = () => {
 
-    const { currentUserdb, queriedUserdb, queryUserInfo, queriedAppointdb, queryAppointInfo, changeState } = useAuth();
+    const { currentUserdb,  queriedAppointdb, queryAppointInfo} = useAuth();
     let scheduledDates = queriedAppointdb && queriedAppointdb.map(citainfo => moment(citainfo.fecha, "YYYY MM DD H:mm"));
-    const [selectedDay, selectDay] = useState(scheduledDates && scheduledDates[0]);
-    const [selectedDayinfo, selectDayinfo] = useState(queriedAppointdb && queriedAppointdb[0]);
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = (day) => setShow(true);
 
 
     function dayStyle(day) {
@@ -32,14 +27,6 @@ const VerCitas = () => {
 
     function onSelect(day) {
         if ((dayStyle(day) === "pending day-container" || dayStyle(day) === "passed day-container")) {
-            for (let i = 0; i < scheduledDates.length; i++) {
-                if (scheduledDates[i].isSame(day, "day")){
-                   selectDayinfo(queriedAppointdb[i]);
-                   selectDay(scheduledDates[i].format('DD MMM YYYY, h:mm a'))
-                   currentUserdb.role === "prac"  ? queryUserInfo(queriedAppointdb[i].pacienteID) : queryUserInfo(queriedAppointdb[i].doctorID);
-                }
-            }
-            handleShow();
         }
     }
     useEffect(() => {
@@ -52,27 +39,7 @@ const VerCitas = () => {
             <p className="desc">Selecciona los días marcados en azul para ver el horario de la cita</p>
             <div className="container">
                 <div className="calendar">
-                    <Calendar onSelect={onSelect} dayStyle={dayStyle}/>
-                    <Modal show={show} onHide={handleClose} size="sm" animation={false}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Horario</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <h2>Fecha: </h2><p>{ selectedDay }</p>
-                            <h2>Estado de cita: </h2>
-                            { currentUserdb.role === "user" && <p>El estado de la cita es {selectedDayinfo && selectedDayinfo.estado}</p> }
-                            {currentUserdb.role === "prac" && <Button className="mx-2" onClick={() => changeState(queriedUserdb.uid, selectedDayinfo.fecha, "confirmado")}  > Confirmar </Button> }
-                            {currentUserdb.role === "prac" && <Button className="mx-2" variant="danger" onClick={() => changeState(queriedUserdb.uid, selectedDayinfo.fecha, "cancelado")}  >Cancelar</Button>}
-                            {currentUserdb.role === "user" ?<h2>Doctor: </h2> : <h2>Paciente: </h2> }
-                            {currentUserdb.role === "user" ? <p>Su doctor es {queriedUserdb && queriedUserdb.name}</p>: <p>Su paciente es {queriedUserdb && queriedUserdb.name}</p>}
-                            {currentUserdb.role === "user" && <p>El motivo de su cita es {queriedUserdb && queriedUserdb.job}</p>}
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={handleClose}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
+                    <Calendar onSelect={onSelect} dayStyle={dayStyle}/>       
                 </div>
                 <div className="schedule-info">
                     <div className="day-info"><div className="pending day-container"></div>Próximas citas</div>
@@ -80,6 +47,7 @@ const VerCitas = () => {
                 </div>
                 <div className="calendar">
                 {currentUserdb.role === "user" && <Link to="/agendarcitas"> <Button className="my-2" block> Añadir cita </Button> </Link>}
+                {currentUserdb.role === "user" ? <Link to="/listacitas"> <Button className="my-2" block> Ver lista de citas  </Button> </Link> :  <Link to="/expedientes"> <Button className="my-2" block> Ver lista de citas  </Button> </Link> }
                 </div>
             </div>
         </div>

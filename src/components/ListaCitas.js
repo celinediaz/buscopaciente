@@ -3,6 +3,7 @@ import { Form, FormControl, Table, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from "../contexts/AuthContext"
+import moment from 'moment';
 
 const ListaCitas = () => {
     const {doctores} = useAuth();
@@ -10,12 +11,13 @@ const ListaCitas = () => {
     const searchRef =useRef();
 
     const renderDoctor = (doctor, index) => {
+        const fecha = moment(doctor.fecha, "YYYY MM DD H:mm").format('LLL');
         return (
             <tr key={index}>
                 <td className="text-center align-middle">{doctor.name}</td>
                 <td className="text-center align-middle">{doctor.email}</td>
                 <td className="text-center align-middle">{doctor.job}</td>
-                <td className="text-center align-middle">{doctor.fecha}</td>
+                <td className="text-center align-middle">{fecha}</td>
                 <td className="text-center align-middle">{doctor.estado}</td>
             </tr>
         )

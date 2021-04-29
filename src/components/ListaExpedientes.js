@@ -3,38 +3,19 @@ import { Form, FormControl, Table, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from "../contexts/AuthContext"
+import moment from 'moment';
 
 const ListaExpedientes = () => {
     const {pacientes, changeState} = useAuth();
     const [patients, setPatients] = useState(pacientes);
     const searchRef =useRef();
-
-    
-    /*
-    const pacientes = [
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "http://example.com" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        { nombre: "Adriana García", correo: "nana@gmial.com", horario: "date", ver: "" },
-        
-    ]*/
-
-    useEffect(() => {
-        
-      }, pacientes);
-
     const renderPaciente = (paciente, index) => {
+        const fecha = moment(paciente.fecha, "YYYY MM DD H:mm").format('LLL');
         return (
             <tr key={index}>
                 <td className="text-center align-middle">{paciente.name}</td>
                 <td className="text-center align-middle">{paciente.email}</td>
-                <td className="text-center align-middle">{paciente.fecha}</td>
+                <td className="text-center align-middle">{fecha}</td>
                 <td className="text-center align-middle"><a href={paciente.ver}>Ver más</a></td>
                 <td className="text-center align-middle"><Button onClick={() => changeState(paciente.uid, paciente.fecha, "confirmado")} >Confirmar</Button></td>
                 <td className="text-center align-middle"><Button variant="danger"  onClick={() => changeState(paciente.uid, paciente.fecha, "cancelado")}>Cancelar</Button></td>
