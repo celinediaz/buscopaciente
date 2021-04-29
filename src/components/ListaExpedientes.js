@@ -5,7 +5,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from "../contexts/AuthContext"
 
 const ListaExpedientes = () => {
-    const {pacientes} = useAuth();
+    const {pacientes, changeState} = useAuth();
     const [patients, setPatients] = useState(pacientes);
     const searchRef =useRef();
 
@@ -36,6 +36,8 @@ const ListaExpedientes = () => {
                 <td className="text-center align-middle">{paciente.email}</td>
                 <td className="text-center align-middle">{paciente.fecha}</td>
                 <td className="text-center align-middle"><a href={paciente.ver}>Ver más</a></td>
+                <td className="text-center align-middle"><Button onClick={() => changeState(paciente.uid, paciente.fecha, "confirmado")} >Confirmar</Button></td>
+                <td className="text-center align-middle"><Button variant="danger"  onClick={() => changeState(paciente.uid, paciente.fecha, "cancelado")}>Cancelar</Button></td>
             </tr>
         )
     }
@@ -70,6 +72,8 @@ const ListaExpedientes = () => {
                                 <th className="text-center">Correo electrónico</th>
                                 <th className="text-center">Fecha de cita</th>
                                 <th className="text-center">Expediente</th>
+                                <th className="text-center">Confirmar</th>
+                                <th className="text-center">Cancelar</th>
                             </tr>
                         </thead>
                         <tbody>
