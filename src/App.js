@@ -3,6 +3,7 @@ import Navb from './components/Navb';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import ListaExpedientes from './components/ListaExpedientes';
+import ListaCitas from './components/ListaCitas';
 import ExpedienteIndividual from './components/ExpedienteIndividual';
 import SignupPract from './components/SignupPract';
 import Signup from './components/Signup';
@@ -39,6 +40,7 @@ function App() {
           <PrivRoute path="/vercitas" component={VerCitas}/>
           <UserRoute path="/agendarcitas" component={AgendarCita}/>
           <ExpRoute path="/expedientes" component={ListaExpedientes} />
+          <UserRoute path="/listacitas" component={ListaCitas} />
           <UserRoute path="/expediente" component = {ExpedienteIndividual} />
           <Route path="/registro" component = {MenuUsuarios}/>
           <ExpRoute path="/experto" component={MenuExperto}/>

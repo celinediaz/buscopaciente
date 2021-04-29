@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [prac, setPrac] = useState([])
   const [pacientes, setPacientes] = useState([])
+  const [doctores, setDoctores] = useState([])
   const [currentUserdb, setCurrentUserdb] = useState()
   const [queriedUserdb, setQueriedUserdb] = useState()
   const [queriedAppointdb, setQueriedAppointdb] = useState();
@@ -59,6 +60,21 @@ export function AuthProvider({ children }) {
       setPacientes(pacienteArr)
     })
     return pacienteArr;
+  }
+
+  function findDoctors(user) {
+    let doctorArr = [];
+    console.log("e")
+    appointmentsRef.where('pacienteID', '==', user).get().then((snapshot) => {
+      snapshot.docs.forEach(doc => { 
+        usersRef.doc(doc.data().doctorID).get().then((user) => {
+          return doctorArr.push({  ...user.data(), fecha: doc.data().fecha, estado: doc.data().estado})
+        })
+      })
+      console.log(doctorArr);
+      setDoctores(doctorArr)
+    })
+    return doctorArr;
   }
 
   function changeState(patient, date, estado) {
@@ -145,7 +161,8 @@ export function AuthProvider({ children }) {
           snapshot.docs.forEach(doc => { userdb = { ...userdb, ...(doc.data()) } })
           setCurrentUserdb(userdb)
         })
-       findPacientes(user.uid);
+       userdb.role === "prac" ? findPacientes(user.uid) : findDoctors(user.uid);
+       
       }
       setLoading(false);
     })
@@ -167,7 +184,8 @@ export function AuthProvider({ children }) {
     queryAppointInfo,
     changeState,
     updateUserInfo,
-    pacientes
+    pacientes,
+    doctores
   }
 
   return (
