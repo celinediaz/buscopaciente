@@ -11,9 +11,11 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [prac, setPrac] = useState([])
+  const [pacientes, setPacientes] = useState([])
   const [currentUserdb, setCurrentUserdb] = useState()
   const [queriedUserdb, setQueriedUserdb] = useState()
-  const [queriedAppointdb, setQueriedAppointdb] = useState()
+  const [queriedAppointdb, setQueriedAppointdb] = useState();
+  const [upd, setUp] = useState([]);
   const usersRef = db.collection('users');
   const appointmentsRef = db.collection('appointments');
   const [loading, setLoading] = useState(true);
@@ -43,6 +45,20 @@ export function AuthProvider({ children }) {
       setPrac(pracArr)
     })
     return pracArr;
+  }
+
+  function findPacientes(user) {
+    let pacienteArr = [];
+    console.log("oi")
+    appointmentsRef.where('doctorID', '==', user).get().then((snapshot) => {
+      snapshot.docs.forEach(doc => { 
+        usersRef.doc(doc.data().pacienteID).get().then((user) => {
+          return pacienteArr.push({  ...user.data(), fecha: doc.data().fecha })
+        })
+      })
+      setPacientes(pacienteArr)
+    })
+    return pacienteArr;
   }
 
   function changeState(patient, date, estado) {
@@ -85,6 +101,7 @@ export function AuthProvider({ children }) {
     await usersRef.where('uid', '==', user).get().then((snapshot) => {
       snapshot.docs.forEach(doc => { userdb = { ...userdb, ...(doc.data()) } })
       setQueriedUserdb(userdb)
+      setUp([]);
     })
     return userdb;
   }
@@ -128,7 +145,7 @@ export function AuthProvider({ children }) {
           snapshot.docs.forEach(doc => { userdb = { ...userdb, ...(doc.data()) } })
           setCurrentUserdb(userdb)
         })
-       // queryAppointInfo(userdb);
+       findPacientes(user.uid);
       }
       setLoading(false);
     })
@@ -149,7 +166,8 @@ export function AuthProvider({ children }) {
     queryUserInfo,
     queryAppointInfo,
     changeState,
-    updateUserInfo
+    updateUserInfo,
+    pacientes
   }
 
   return (

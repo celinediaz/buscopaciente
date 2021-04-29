@@ -23,7 +23,7 @@ const SignupPract = () => {
           setLoading(true)
           let otherRef = {name: nameRef.current.value, desc: descRef.current.value, job: jobRef.current.value, state: stateRef.current.value, price: priceRef.current.value}
           await signup(emailRef.current.value, passRef.current.value, "prac", otherRef) 
-          history.push("/")
+          history.push("/paciente")
       } catch {
           console.log("error")
           setError("No se ha podido crear la cuenta")

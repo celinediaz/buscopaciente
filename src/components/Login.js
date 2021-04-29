@@ -17,7 +17,7 @@ const Login = () => {
         setError("")
         setLoading(true)
         await login(emailRef.current.value, passRef.current.value) 
-        history.push("/") //use a ternary operator to choose which route to go (doctor/user)
+        history.push("/") 
     } catch {
         console.log("error")
         setError("No se ha podido iniciar sesión")
