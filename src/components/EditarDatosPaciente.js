@@ -74,9 +74,9 @@ const EditarDatosPaciente = () => {
 
               </Col>
             </Row>
-            <Button variant="primary" type="submit" disabled={loading} className="my-2">Siguiente</Button>
+            <Button variant="primary" type="submit" disabled={loading} className="m-2">Siguiente</Button>
+            <Button variant="danger" className="mx-2">Eliminar cuenta</Button>
           </Form>
-
 
         </div>
  

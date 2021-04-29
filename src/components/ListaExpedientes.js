@@ -33,7 +33,7 @@ const ListaExpedientes = () => {
 
 
     return (
-        <div className="App">
+        <div>
             <h1>Expedientes</h1>
             <div className="buscador">
                 <Form inline className="justify-content-center" onSubmit={searchPatient}>
@@ -45,7 +45,7 @@ const ListaExpedientes = () => {
             </div>
 
             <div className="container mb-5">
-                <div className="tablita  mb-5">
+                <div className="tablita mb-4">
                     <Table bordered hover>
                         <thead>
                             <tr>

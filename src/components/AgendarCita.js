@@ -3,6 +3,7 @@ import {Form, Modal, Button} from 'react-bootstrap'
 import moment from 'moment';
 import Calendar from './Calendar';
 import { useAuth } from "../contexts/AuthContext"
+import {Link} from 'react-router-dom';
 
 const AgendarCita = () => {
     const tipoDoctor = ['Medicina general', 'Psicología', 'Nutrición', 'Enfermería', 'Químico', 'Dentista'];
@@ -16,6 +17,7 @@ const AgendarCita = () => {
    const [hora, setHora] = useState([]);
    const [practicante, setPracticante] = useState([]);
    const [upd, setUp] = useState([]);
+   const [loading, setLoading] = useState(false);
     function dayStyle(day) {
             if (!day.isBefore(new Date(), "day")) {
                 return "available day-container";
@@ -47,13 +49,13 @@ const AgendarCita = () => {
    async function handleSubmit(e){
         e.preventDefault()
         try{
-            //setLoading(true)
+            setLoading(true)
             const cita = moment(selectedDay.format('YYYY MM DD') + " " + hora, "YYYY MM DD H:mm").format('YYYY MM DD H:mm');
            await agendar(practicante.uid, cita)
         } catch {
             console.log("error")
         }
-        //setLoading(false);
+        setLoading(false);
     }
 
     return (
@@ -81,6 +83,8 @@ const AgendarCita = () => {
             </div>
             <div className="calendar">
                 <Calendar onSelect={onSelect} dayStyle={dayStyle} />
+                <Link to="/listacitas"> <Button className="my-2" block> Ver lista de citas  </Button> </Link> 
+                <Link to="/vercitas"> <Button className="my-2" block> Ver calendario </Button> </Link> 
                 <Modal show={show} onHide={handleClose} size="sm" animation={false}>
                 <Form onSubmit={handleSubmit}>
                         <Modal.Header closeButton>
@@ -97,7 +101,7 @@ const AgendarCita = () => {
                             </Form.Group>
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="primary" type="submit">
+                            <Button variant="primary" type="submit" disabled={loading}>
                                 Agendar
                             </Button>
                             <Button variant="secondary" onClick={handleClose}>

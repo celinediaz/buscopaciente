@@ -36,7 +36,6 @@ const VerCitas = () => {
     return (
         <div>
             <h1>Ver citas</h1>
-            <p className="desc">Selecciona los días marcados en azul para ver el horario de la cita</p>
             <div className="container">
                 <div className="calendar">
                     <Calendar onSelect={onSelect} dayStyle={dayStyle}/>       

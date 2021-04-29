@@ -110,6 +110,7 @@ export function AuthProvider({ children }) {
       });
     }
     queryAppointInfo(currentUserdb);
+    findDoctors(currentUserdb.uid);
   }
 
   async function queryUserInfo(user) {

@@ -29,12 +29,12 @@ const ListaCitas = () => {
         setDoctors(filteredDoctors)
     }
     return (
-        <div className="App">
+        <div>
         <h1>Citas</h1>
         <div className="buscador">
             <Form inline className="justify-content-center" onSubmit={searchDoctor}>
                 <FontAwesomeIcon className="icono" icon={faSearch} color="#007bff" />
-                <FormControl ref={searchRef} className="buscadori" type="text" placeholder="Buscar paciente" className=" mr-sm-8 col-sm-4" width="100" />
+                <FormControl ref={searchRef} className="buscadori" type="text" placeholder="Buscar doctor" className=" mr-sm-8 col-sm-4" width="100" />
                 <Button type="submit" className="mx-1"> Buscar </Button>
             </Form>
             
