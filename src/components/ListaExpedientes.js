@@ -45,9 +45,7 @@ const ListaExpedientes = () => {
         e.preventDefault();
         console.log(searchRef.current.value);
         const filteredPatients = pacientes.filter(patient => patient.name.toLowerCase().startsWith(searchRef.current.value.toLowerCase()));
-        console.log(filteredPatients);
         setPatients(filteredPatients)
-
     }
 
 

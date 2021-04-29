@@ -17,12 +17,18 @@ const AgendarCita = () => {
    const [practicante, setPracticante] = useState([]);
    const [upd, setUp] = useState([]);
     function dayStyle(day) {
-        return "available day-container"
+            if (!day.isBefore(new Date(), "day")) {
+                return "available day-container";
+            }
+        return "day-container"
     }
 
+
     function onSelect(day) {
+        if(!day.isBefore(new Date(), "day")){
             selectDay(day);
             handleShow();
+        }
     }
     
     function selectJob(job){
