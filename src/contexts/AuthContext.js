@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import 'firebase/firestore';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const AuthContext = React.createContext()
 
@@ -42,6 +42,17 @@ export function AuthProvider({ children }) {
   }
   async function deleteUser() {
     let user = auth.currentUser;
+    let appId;
+    let role = currentUserdb.role === "prac" ? "doctorID" : "pacienteID";
+    await appointmentsRef.where(role, '==', currentUserdb.uid).get().then((snapshot) => {
+      snapshot.docs.forEach(doc => {
+        appointmentsRef.doc(doc.id).delete().then(() => {
+        }).catch((error) => {
+          console.error("Error");
+        });
+      })
+    })
+
     await usersRef.doc(currentUserdb.uid).delete().then(async function () {
       await logout();
       setCurrentUserdb();
@@ -54,6 +65,7 @@ export function AuthProvider({ children }) {
     }).catch(function (error) {
       console.log("the user couldn't be deleted")
     });
+
   }
 
 

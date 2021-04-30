@@ -13,7 +13,7 @@ const EditarDatosPaciente = () => {
     const addressRef =useRef();
     const lastnameRef =useRef();
     const illnessRef =useRef();
-    const {updateUserInfo} = useAuth()
+    const {updateUserInfo, deleteUser} = useAuth()
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const history = useHistory();
@@ -75,7 +75,7 @@ const EditarDatosPaciente = () => {
               </Col>
             </Row>
             <Button variant="primary" type="submit" disabled={loading} className="m-2">Siguiente</Button>
-            <Button variant="danger" className="mx-2">Eliminar cuenta</Button>
+            <Button variant="danger" className="mx-2" onClick ={() => deleteUser()}>Eliminar cuenta</Button>
           </Form>
 
         </div>
