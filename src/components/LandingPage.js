@@ -31,7 +31,7 @@ const LandingPage = () => {
                 </p>
                 </div>
                 <p>
-                    <Button variant="primary">Conoce más</Button>
+                    <Button variant="primary" type="submit" as={Link} to="/conocemas">Conoce más</Button>
                 </p>
             </Jumbotron>
             </div>
