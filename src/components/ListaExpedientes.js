@@ -68,7 +68,7 @@ const ListaExpedientes = () => {
                             {patients.map(renderPaciente)}
                         </tbody>
                     </Table>
-                    <Modal show={show} onHide={handleClose} size="lg" animation={false}>
+                    <Modal show={show} onHide={handleClose} size="sm" animation={false}>
                         <Modal.Header closeButton>
                             <Modal.Title>Expediente</Modal.Title>
                         </Modal.Header>

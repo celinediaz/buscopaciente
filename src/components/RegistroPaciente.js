@@ -65,7 +65,7 @@ const RegistroPaciente = () => {
                 <Form.Control ref={lastnameRef} placeholder="Ej. García" />
 
                 <Form.Label>Número:</Form.Label>
-                <Form.Control ref={numberRef} placeholder="8675309" />
+                <Form.Control ref={numberRef} placeholder="Ej. 8675309" />
 
                 <Form.Label md>Enfermedades o alergias</Form.Label>
                 <Form.Control ref={illnessRef} placeholder="Ej. Alergia al chocolate, asma, ansiedad" />

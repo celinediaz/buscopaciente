@@ -53,7 +53,7 @@ const EditarDatosPaciente = () => {
                 <Form.Label>Edad:</Form.Label>
                 <Form.Control ref={ageRef} placeholder="Ej. 19" />
                 <Form.Label>Número:</Form.Label>
-                <Form.Control ref={numberRef}placeholder="8675309" />
+                <Form.Control ref={numberRef}placeholder="Ej. 8675309" />
 
               </Col>
 
