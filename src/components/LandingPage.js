@@ -59,7 +59,19 @@ const LandingPage = () => {
                     </Col>
                 </Row>
             </Container>
+
+            <div className="especialidades">
+               
+               <h1 className="areas_atencion">Áreas de atención</h1>
+               <p>
+                Principales áreas que atienden nuestros practicantes 
+               </p>
+               
+           </div>
+
         </div>
+
+
     )
 }
 
