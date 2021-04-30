@@ -20,9 +20,11 @@ import RegistroPaciente from './components/RegistroPaciente';
 import UserRoute from './components/UserRoute';
 import EditarDatosPaciente from './components/EditarDatosPaciente';
 import EditarDatosExperto from './components/EditarDatosExperto';
+import Quienessomos from './components/Quienessomos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AuthProvider } from "./contexts/AuthContext";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 
 
 
@@ -33,9 +35,9 @@ function App() {
     <AuthProvider>
       <Navb />
         <Switch>
-          
           <Route exact path="/" component = {LandingPage}/>
           <Route path="/signup" component ={Signup}/>
+          <Route path="/conocemas" component ={Quienessomos}/>
           <Route path="/signuppract" component ={SignupPract}/>
           <Route path="/login" component={Login}/>
           <PrivRoute path="/vercitas" component={VerCitas}/>
