@@ -41,25 +41,33 @@ const LandingPage = () => {
                
                 <h1 className="titulo_equipo">¿Quiénes forman parte de nuetro equipo?</h1>
                 <p>
-                    Expertos en el área de la salud seleccionados para brindarte la mejor calidad.
+                    Expertos en el área de la salud como médicos, odontologos, psicologos seleccionados para brindarte la mejor calidad de servicio para ti y tu familia.
                 </p>
                 
             </div>
 
             <Container className="imagenes_experto">
                  <Row>
-                    <Col xs={6} md={4}>
-                     <Image src="https://www.jobisjob.com.mx/blog/wp-content/uploads/2015/01/foto-ideal-perfil-linkedin-300x200.jpg" roundedCircle width="80%" />
+                    <Col xs={6} md={3}>
+                     <Image src="https://1.bp.blogspot.com/-ScppyJrc2tg/YIx1z2b7G_I/AAAAAAAAAZI/t73VuZcBrTwPNwfyMtPeGJNf4yO2L1V-QCLcBGAsYHQ/s320/Wavy_Lst-05_Single-04.jpg" roundedCircle width="80%" />
                      </Col>
-                    <Col xs={6} md={4}>
-                     <Image src="https://i.pinimg.com/736x/5f/49/e1/5f49e11efad480bf5be95e2cd30332f4.jpg" roundedCircle width="50%"/>
+                    <Col xs={6} md={3}>
+                     <Image src="https://1.bp.blogspot.com/-gq0a5ZqS--s/YIx1ylBatQI/AAAAAAAAAZE/VAV1caSa6s0NnffzFf2vLw0SiCrgkdzzACLcBGAsYHQ/s320/odonto.jpg" roundedCircle width="80%"/>
                     </Col>
-                    <Col xs={6} md={4}>
-                     <Image src="https://d8bwfgv5erevs.cloudfront.net/cdn/13/images/curso-online-perfil-psicologico-de-una-persona_l_primaria_1_1524733601.jpg" roundedCircle width="80%" />
+                    <Col xs={6} md={3}>
+                     <Image src="https://1.bp.blogspot.com/-XAXnB92q1xw/YIx1uFvI6dI/AAAAAAAAAZA/JzOxMNxAXDsXr1MOnU_mkJpKFWuJ8TfDQCLcBGAsYHQ/s320/4951627.jpg" roundedCircle width="80%" />
+                    </Col>
+                    <Col xs={6} md={3}>
+                     <Image src="https://1.bp.blogspot.com/-MXRxAMurEag/YIx1uI7Uk5I/AAAAAAAAAY8/TndX3cW6zuQAv-ZNICkxXtyDt4JxJI6fgCLcBGAsYHQ/s320/3926904.jpg" roundedCircle width="80%" />
                     </Col>
                 </Row>
             </Container>
+
+            
+
         </div>
+
+
     )
 }
 
