@@ -45,9 +45,9 @@ const Pagos = () => {
                <Col>
                <div className="imagenes_tarjeta">
                   <Row xs={3}>
-                    <Col><img src="https://1000marcas.net/wp-content/uploads/2020/03/American-Express-Logo.png" width="100" height="50"></img> </Col>
-                    <Col><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0020/5718/brand.gif?itok=sA8OABYh" width="100" height="50"></img> </Col>
-                    <Col><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/MasterCard_early_1990s_logo.png" width="100" height="50"></img></Col>
+                    <Col><img src="https://1000marcas.net/wp-content/uploads/2020/03/American-Express-Logo.png" width="100" height="50" alt="AE"></img> </Col>
+                    <Col><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/0020/5718/brand.gif?itok=sA8OABYh" width="100" height="50" alt="visa"></img> </Col>
+                    <Col><img src="https://upload.wikimedia.org/wikipedia/commons/7/72/MasterCard_early_1990s_logo.png" width="100" height="50" alt="MasterCard"></img></Col>
                   </Row>
   
                   <div className="resumen">

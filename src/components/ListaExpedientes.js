@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Form, FormControl, Table, Button, Modal} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -34,7 +34,6 @@ const ListaExpedientes = () => {
 
     function searchPatient(e){
         e.preventDefault();
-        console.log(searchRef.current.value);
         const filteredPatients = pacientes.filter(patient => patient.name.toLowerCase().startsWith(searchRef.current.value.toLowerCase()));
         setPatients(filteredPatients)
     }
@@ -46,7 +45,7 @@ const ListaExpedientes = () => {
             <div className="buscador">
                 <Form inline className="justify-content-center" onSubmit={searchPatient}>
                     <FontAwesomeIcon className="icono" icon={faSearch} color="#007bff" />
-                    <FormControl ref={searchRef} className="buscadori" type="text" placeholder="Buscar paciente" className=" mr-sm-8 col-sm-4" width="100" />
+                    <FormControl ref={searchRef} className="buscadori mr-sm-8 col-sm-4" type="text" placeholder="Buscar paciente" width="100" />
                     <Button type="submit" className="mx-1"> Buscar </Button>
                 </Form>
                 
@@ -80,7 +79,6 @@ const ListaExpedientes = () => {
                             <h4>Estado civil</h4><p>{patient && patient.maritalStatus}</p>  
                             {patient && patient.religion && <h4>Religión</h4>}<p>{patient && patient.religion}</p> 
                             <h4>Correo</h4><p>{patient && patient.email}</p>  
-                            <h4>Notas</h4><p>  </p>
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleClose}>

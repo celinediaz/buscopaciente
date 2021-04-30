@@ -1,34 +1,38 @@
-import React, { useRef, useState, useMemo } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
-import * as THREE from "three";
-import image from "./logo.jpeg";
+import React from "react";
+import { Canvas } from "react-three-fiber";
+import {MeshDistortMaterial, MeshWobbleMaterial, Ring, Text } from '@react-three/drei'
 
-const Scene = (props) => {
-    // This reference will give us direct access to the mesh
-    const mesh = useRef();
-  
-    // Set up state for the hovered and active state 
-    const [active, setActive] = useState(false);
-  
-    // Rotate mesh every frame, this is outside of React without overhead
-    useFrame(() => {
-      mesh.current.rotation.x = mesh.current.rotation.y += 0.01;
-    });
-    
-    const texture = useMemo(() => new THREE.TextureLoader().load(image), []);
-    
+const Scene = ({texto}) => {
     return (
-      <mesh
-      {...props}
-      ref={mesh}
-      scale={active ? [2, 2, 2] : [1.5, 1.5, 1.5]}
-      onClick={(e) => setActive(!active)}
-        >
-        <sphereGeometry args={[1, 16, 16]} />
-        <meshBasicMaterial attach="material" side={THREE.DoubleSide}>
-          <primitive attach="map" object={texture} />
-        </meshBasicMaterial>
-      </mesh>
+      <Canvas>
+      <ambientLight intensity={0.7} />
+      <spotLight position={[5, 10, 10]} angle={0.15} penumbra={0.8} />
+      <pointLight position={[5, -5, -10]} />
+      <Ring visible position={[0, 0, 0]} args={[2, 3, 150]}>
+        <MeshWobbleMaterial
+          color="#037AFB"
+          attach="material"
+          factor={0.3}
+          speed={0.2}
+          roughness={0}
+        />
+        <MeshDistortMaterial
+          color="#037AFB"
+          attach="material"
+          distort={0.2} 
+          speed={10} 
+        />
+      </Ring>
+      <Text fontSize={1} font="https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff"
+            outlineOffsetX={'10%'}
+            outlineOffsetY={'10%'}
+            outlineBlur={'30%'}
+            outlineOpacity={0.3}
+            outlineColor="#000000">
+        {texto}
+        <meshStandardMaterial attach="material" color="#037AFB" />
+      </Text>
+    </Canvas>
     );
   }
   

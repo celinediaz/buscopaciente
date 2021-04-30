@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import { Button, Form, Row, Col} from 'react-bootstrap'
+import { Button, Form, Row, Col, Alert} from 'react-bootstrap'
 import {useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext"
 
@@ -38,7 +38,7 @@ const RegistroPaciente = () => {
       <div className="App">
   
       <h1>Registrar paciente</h1>
-
+      {error && <Alert variant="danger">{error}</Alert>}
         <div class='formulario'>
 
           <Form className="formi" onSubmit={handleSubmit}>

@@ -12,7 +12,7 @@ const AgendarCita = () => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = (day) => setShow(true);
-    const {findPract, currentUserdb, agendar} = useAuth();
+    const {findPract, agendar} = useAuth();
    const [practicantes, setPracticantes] = useState([]);
    const [hora, setHora] = useState([]);
    const [practicante, setPracticante] = useState([]);

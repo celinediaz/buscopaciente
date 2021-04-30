@@ -42,7 +42,6 @@ export function AuthProvider({ children }) {
   }
   async function deleteUser() {
     let user = auth.currentUser;
-    let appId;
     let role = currentUserdb.role === "prac" ? "doctorID" : "pacienteID";
     await appointmentsRef.where(role, '==', currentUserdb.uid).get().then((snapshot) => {
       snapshot.docs.forEach(doc => {

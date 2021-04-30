@@ -34,7 +34,7 @@ const ListaCitas = () => {
         <div className="buscador">
             <Form inline className="justify-content-center" onSubmit={searchDoctor}>
                 <FontAwesomeIcon className="icono" icon={faSearch} color="#007bff" />
-                <FormControl ref={searchRef} className="buscadori" type="text" placeholder="Buscar doctor" className=" mr-sm-8 col-sm-4" width="100" />
+                <FormControl ref={searchRef} className="buscadori mr-sm-8 col-sm-4" type="text" placeholder="Buscar doctor"width="100" />
                 <Button type="submit" className="mx-1"> Buscar </Button>
             </Form>
             

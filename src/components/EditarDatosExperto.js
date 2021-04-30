@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import {Form, Button, Col} from 'react-bootstrap';
+import {Form, Button, Col, Alert} from 'react-bootstrap';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom";
 
@@ -38,7 +38,7 @@ const EditarDatosExperto = () => {
       return (
         <div className="App">
               <h1>Editar datos como practicante</h1>
-    
+              {error && <Alert variant="danger">{error}</Alert>}
             <div className="container my-3 pb-5">
               <div className="d-flex flex-row mb-2 justify-content-center flex-fill">
  
