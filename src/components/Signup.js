@@ -29,6 +29,7 @@ const Signup = () => {
         <div>
             <h1>Sign Up</h1>
             {error && <Alert variant="danger">{error}</Alert>}
+            
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

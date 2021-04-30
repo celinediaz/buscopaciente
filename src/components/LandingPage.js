@@ -24,7 +24,7 @@ const LandingPage = () => {
                 <h1>¿Quiénes somos?</h1>
                 <div className="texto_quienes_somos">
                 <p>
-                    Te proporcionamos las mejores opciones para ti. Ajustalo a tus
+                    Te proporcionamos las mejores opciones para ti. Ajústalo a tus
                     necesidades de salud y asegúrate de que te sometas a un tratamiento 
                     con nuestros expertos calificados, puedes consultar con
                     nosotros qué tipo de servicio es adecuado para tu salud.
@@ -41,7 +41,7 @@ const LandingPage = () => {
                
                 <h1 className="titulo_equipo">¿Quiénes forman parte de nuetro equipo?</h1>
                 <p>
-                    Expertos en el área de la salud como médicos, odontologos, psicologos seleccionados para brindarte la mejor calidad de servicio para ti y tu familia.
+                    Expertos en el área de la salud como médicos, odontólogos, psicólogos seleccionados para brindarte la mejor calidad de servicio para ti y tu familia.
                 </p>
                 
             </div>
