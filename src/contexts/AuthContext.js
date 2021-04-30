@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth, db } from "../firebase"
 import 'firebase/firestore';
+import {useHistory} from 'react-router-dom';
 
 const AuthContext = React.createContext()
 
@@ -20,6 +21,7 @@ export function AuthProvider({ children }) {
   const usersRef = db.collection('users');
   const appointmentsRef = db.collection('appointments');
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
 
   const signup = async (email, password, role, other) => {
     const authResult = await auth.createUserWithEmailAndPassword(email, password);
@@ -38,6 +40,22 @@ export function AuthProvider({ children }) {
   function logout() {
     return auth.signOut()
   }
+  async function deleteUser() {
+    let user = auth.currentUser;
+    await usersRef.doc(currentUserdb.uid).delete().then(async function () {
+      await logout();
+      setCurrentUserdb();
+      history.push("/login")
+    }).catch(function (error) {
+      console.log("the user document couldn't be deleted")
+    });
+    user.delete().then(function () {
+      setCurrentUser();
+    }).catch(function (error) {
+      console.log("the user couldn't be deleted")
+    });
+  }
+
 
   function findPract(job) {
     let pracArr = [];
@@ -50,11 +68,10 @@ export function AuthProvider({ children }) {
 
   function findPacientes(user) {
     let pacienteArr = [];
-    console.log("oi")
     appointmentsRef.where('doctorID', '==', user).get().then((snapshot) => {
-      snapshot.docs.forEach(doc => { 
+      snapshot.docs.forEach(doc => {
         usersRef.doc(doc.data().pacienteID).get().then((user) => {
-          return pacienteArr.push({  ...user.data(), fecha: doc.data().fecha })
+          return pacienteArr.push({ ...user.data(), fecha: doc.data().fecha })
         })
       })
       setPacientes(pacienteArr)
@@ -64,14 +81,12 @@ export function AuthProvider({ children }) {
 
   function findDoctors(user) {
     let doctorArr = [];
-    console.log("e")
     appointmentsRef.where('pacienteID', '==', user).get().then((snapshot) => {
-      snapshot.docs.forEach(doc => { 
+      snapshot.docs.forEach(doc => {
         usersRef.doc(doc.data().doctorID).get().then((user) => {
-          return doctorArr.push({  ...user.data(), fecha: doc.data().fecha, estado: doc.data().estado})
+          return doctorArr.push({ ...user.data(), fecha: doc.data().fecha, estado: doc.data().estado })
         })
       })
-      console.log(doctorArr);
       setDoctores(doctorArr)
     })
     return doctorArr;
@@ -111,6 +126,7 @@ export function AuthProvider({ children }) {
     }
     queryAppointInfo(currentUserdb);
     findDoctors(currentUserdb.uid);
+    return available;
   }
 
   async function queryUserInfo(user) {
@@ -123,11 +139,10 @@ export function AuthProvider({ children }) {
     return userdb;
   }
 
-  function updateUserInfo(datos){
+  function updateUserInfo(datos) {
     let changedInfo = {}
-    console.log(datos)
-    for(const key in datos){
-      if(datos[key]!==""){
+    for (const key in datos) {
+      if (datos[key] !== "") {
         changedInfo[key] = datos[key]
       }
     }
@@ -162,8 +177,8 @@ export function AuthProvider({ children }) {
           snapshot.docs.forEach(doc => { userdb = { ...userdb, ...(doc.data()) } })
           setCurrentUserdb(userdb)
         })
-       userdb.role === "prac" ? findPacientes(user.uid) : findDoctors(user.uid);
-       
+        userdb.role === "prac" ? findPacientes(user.uid) : findDoctors(user.uid);
+
       }
       setLoading(false);
     })
@@ -185,6 +200,7 @@ export function AuthProvider({ children }) {
     queryAppointInfo,
     changeState,
     updateUserInfo,
+    deleteUser,
     pacientes,
     doctores
   }

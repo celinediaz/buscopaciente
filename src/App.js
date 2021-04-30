@@ -47,9 +47,9 @@ function App() {
           <UserRoute path="/paciente" component={MenuPaciente}/>
           <Route path="/pagos" component={Pagos}/>
           <Route path="/registropaciente" component={RegistroPaciente}/>
-          <Route path="/editardatos" component={EditarDatosPaciente}/>
+          <UserRoute path="/editardatos" component={EditarDatosPaciente}/>
           <Route path="/signuppaciente" component={RegistroPaciente}/>i
-          <Route path="/editardatosexperto" component={EditarDatosExperto}/>i
+          <ExpRoute path="/editardatosexperto" component={EditarDatosExperto}/>i
 
         </Switch>
         </AuthProvider>

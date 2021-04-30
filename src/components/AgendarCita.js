@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import {Form, Modal, Button} from 'react-bootstrap'
+import {Form, Modal, Button, Alert} from 'react-bootstrap'
 import moment from 'moment';
 import Calendar from './Calendar';
 import { useAuth } from "../contexts/AuthContext"
@@ -17,6 +17,7 @@ const AgendarCita = () => {
    const [hora, setHora] = useState([]);
    const [practicante, setPracticante] = useState([]);
    const [upd, setUp] = useState([]);
+   const [error, setError] = useState('');
    const [loading, setLoading] = useState(false);
     function dayStyle(day) {
             if (!day.isBefore(new Date(), "day")) {
@@ -49,11 +50,13 @@ const AgendarCita = () => {
    async function handleSubmit(e){
         e.preventDefault()
         try{
+            setError("")
             setLoading(true)
             const cita = moment(selectedDay.format('YYYY MM DD') + " " + hora, "YYYY MM DD H:mm").format('YYYY MM DD H:mm');
            await agendar(practicante.uid, cita)
         } catch {
             console.log("error")
+            setError("No se ha podido agendar la cita")
         }
         setLoading(false);
     }
@@ -91,6 +94,7 @@ const AgendarCita = () => {
                             <Modal.Title>Horario</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
+                            {error && <Alert variant="danger">{error}</Alert>}
                             <h2>Fecha: </h2><p>{selectedDay.format('MMMM Do YYYY')}</p>
                             <h2>Doctor: </h2><p>{practicante.name}</p>           
                             <Form.Group controlId="exampleForm.ControlSelect2">

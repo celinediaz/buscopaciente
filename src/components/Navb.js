@@ -6,23 +6,20 @@ import { useAuth } from "../contexts/AuthContext"
 
 const Navb = () => {
   const history = useHistory();
-  const [error, setError] = useState('');
   const {logout, currentUser, currentUserdb} = useAuth()
 
    async function handleLogOut(){
-    setError("");
     try {
       await logout()
       history.push("/")
     }catch{
       console.log("error")
-      setError("Error")
     }
   }
 
   return (
     <Navbar collapseOnSelect expand="lg">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <Image src={logo} width="50" height="50" className="icononav d-inline-block align-center" />
           </Navbar.Brand>
           <Navbar.Brand as={Link} to="/">BuscoPaciente</Navbar.Brand>

@@ -1,8 +1,7 @@
 import React, {useRef, useState} from 'react'
-import {Card, Form, Button, Col} from 'react-bootstrap';
+import {Form, Button, Col} from 'react-bootstrap';
 import { useAuth } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom";
-import EditarDatosPaciente from './EditarDatosPaciente';
 
 const EditarDatosExperto = () => {
 
@@ -11,8 +10,7 @@ const EditarDatosExperto = () => {
   const jobRef =useRef();
   const stateRef =useRef();
   const priceRef =useRef();
-  const horarioRef =useRef();
-  const {updateUserInfo} = useAuth()
+  const {updateUserInfo, deleteUser} = useAuth()
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
@@ -79,11 +77,11 @@ const EditarDatosExperto = () => {
                         </Form.Control>
                       </Form.Group>
                     </Form.Row>
-                    <Button variant="primary" type="submit" className="my-1">
+                    <Button variant="primary" type="submit" className="my-1" disabled={loading}>
                       Guardar cambios
                     </Button>
                   </Form>
-                    <Button variant="danger" type="delete" className="my-1">
+                    <Button variant="danger" type="delete" className="my-1" onClick ={() => deleteUser()} >
                       Borrar cuenta
                     </Button>
                 </div>
