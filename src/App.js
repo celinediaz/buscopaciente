@@ -31,7 +31,8 @@ function App() {
     <AuthProvider>
       <Navb />
         <Switch>
-          <Route exact path="/inicio" component = {LandingPage}/>
+          
+          <Route exact path="/" component = {LandingPage}/>
           <Route path="/signup" component ={Signup}/>
           <Route path="/signuppract" component ={SignupPract}/>
           <Route path="/login" component={Login}/>
@@ -53,7 +54,11 @@ function App() {
       <Footer />
     </div>
     </Router>
+    
   );
+
+
+  
 }
 
 export default App;
