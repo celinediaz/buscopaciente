@@ -1,7 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Image, Button, Jumbotron } from "react-bootstrap";
-import image from "./undraw_medicine.svg";
-import { Link} from "react-router-dom";
+import {Jumbotron} from "react-bootstrap";
 
 const Quienessomos = () => {
     return (

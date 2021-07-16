@@ -11,13 +11,10 @@ import VerCitas from './components/VerCitas';
 import AgendarCita from './components/AgendarCita';
 import LandingPage from './components/LandingPage';
 import MenuUsuarios from './components/MenuUsuarios';
-import MenuExperto from './components/MenuExperto';
-import ExpRoute from './components/ExpRoute';
 import PrivRoute from './components/PrivRoute';
-import MenuPaciente from './components/MenuPaciente';
+import Menu from './components/Menu';
 import Pagos from './components/Pagos';
 import RegistroPaciente from './components/RegistroPaciente';
-import UserRoute from './components/UserRoute';
 import EditarDatosPaciente from './components/EditarDatosPaciente';
 import EditarDatosExperto from './components/EditarDatosExperto';
 import Quienessomos from './components/Quienessomos';
@@ -41,18 +38,17 @@ function App() {
           <Route path="/signuppract" component ={SignupPract}/>
           <Route path="/login" component={Login}/>
           <PrivRoute path="/vercitas" component={VerCitas}/>
-          <UserRoute path="/agendarcitas" component={AgendarCita}/>
-          <ExpRoute path="/expedientes" component={ListaExpedientes} />
-          <UserRoute path="/listacitas" component={ListaCitas} />
-          <UserRoute path="/expediente" component = {ExpedienteIndividual} />
+          <PrivRoute role="user" path="/agendarcitas" component={AgendarCita}/>
+          <PrivRoute role="prac" path="/expedientes" component={ListaExpedientes} />
+          <PrivRoute role="user" path="/listacitas" component={ListaCitas} />
+          <PrivRoute role="user" path="/expediente" component = {ExpedienteIndividual} />
           <Route path="/registro" component = {MenuUsuarios}/>
-          <ExpRoute path="/experto" component={MenuExperto}/>
-          <UserRoute path="/paciente" component={MenuPaciente}/>
+          <PrivRoute path="/menu" component={Menu}/>
           <Route path="/pagos" component={Pagos}/>
           <Route path="/registropaciente" component={RegistroPaciente}/>
-          <UserRoute path="/editardatos" component={EditarDatosPaciente}/>
+          <PrivRoute role="user" path="/editardatos" component={EditarDatosPaciente}/>
           <Route path="/signuppaciente" component={RegistroPaciente}/>i
-          <ExpRoute path="/editardatosexperto" component={EditarDatosExperto}/>i
+          <PrivRoute role="prac" path="/editardatosexperto" component={EditarDatosExperto}/>i
 
         </Switch>
         </AuthProvider>

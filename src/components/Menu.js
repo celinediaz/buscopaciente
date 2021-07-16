@@ -2,8 +2,10 @@ import React from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import image from "./undraw_medicine.svg";
+import { useAuth } from "../contexts/AuthContext"
 
-const MenuPaciente = () => {
+const Menu = (user) => {
+  const {currentUserdb} = useAuth()
 
   return (
     <div className="App">
@@ -13,9 +15,9 @@ const MenuPaciente = () => {
       <Container>
         <Row>
           <Col className="align-self-center">
-            <Link to="/agendarcitas">
+            <Link to={currentUserdb.role ==="user" ? "/agendarcitas" : "/editardatosexperto"}>
               <Button className="my-2" size="lg" block>
-                Agendar cita
+              {currentUserdb.role ==="user" ? "Agendar cita" : "Editar mis datos"}
               </Button>
             </Link>
             <Link to="/vercitas">
@@ -23,16 +25,18 @@ const MenuPaciente = () => {
                 Ver mis citas
               </Button>
             </Link>
-            <Link to="/editardatos">
+            <Link to={currentUserdb.role ==="user" ? "/editardatos" : "/expedientes"}>
               <Button className="my-2" size="lg" block>
-                Editar datos
+              {currentUserdb.role ==="user" ? "Editar datos" : "Ver expedientes"}
               </Button>
             </Link>
+            {currentUserdb.role ==="user" &&
             <Link to="/listacitas">
               <Button className="my-2" size="lg" block>
                 Lista de citas
               </Button>
             </Link>
+            }
           </Col>
 
           <Col>
@@ -45,4 +49,4 @@ const MenuPaciente = () => {
   )
 }
 
-export default MenuPaciente
+export default Menu
